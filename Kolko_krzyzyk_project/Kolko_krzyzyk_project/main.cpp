@@ -36,8 +36,7 @@ int main()
 
 using namespace std;
 
-void plansza(vector <int> tablica) //wypisywanie wyniku na planszy
-{
+void plansza(vector <char> tablica){ //wypisywanie wyniku na planszy
     for (int i = 0; i < 9; i++)
     {
         cout << tablica[i] << " ";
@@ -47,25 +46,54 @@ void plansza(vector <int> tablica) //wypisywanie wyniku na planszy
     }
 }
 
+void ruch(vector <char> tablica_wynikow, char znak){
+    int miejsce;
+    cout << "Podaj index pola";
+    cin >> miejsce;
+    if (tablica_wynikow[miejsce] == ' ') {
+        tablica_wynikow[miejsce] = znak;
+    }
+    else {
+        cout << "Dane miejsce jest zajête!!!";
+        ruch(tablica_wynikow, znak);
+    }
+    plansza(tablica_wynikow);
+}
+
 
 int main(){
-    int rozmiar;
-    vector <int> tablica_wynikow;
-    cout << "Podaj rozmiar ";
+    int rozmiar, licznik_ruchow = 0;
+    char znak;
+    bool wygrana = false;
+
+    vector <char> tablica_wynikow;
+
+    cout << "Podaj rozmiar ";  // generowanie planszy o podanych rozmiarach
     cin >> rozmiar ;
     for (int i = 0; i < rozmiar*rozmiar; i++){
-        tablica_wynikow.push_back(0);
+        tablica_wynikow.push_back(' ');
     }
     
-    plansza(tablica_wynikow);
+    while (wygrana == false){
+         // nadpisywanie tabeli
 
-    cout << endl << endl;
-    for (int i = 0; i < tablica_wynikow.size(); i++)
-    {
-        tablica_wynikow[i] = i;
+        if (licznik_ruchow % 2 == 0) { // ruch krzy¿yka
+            znak = 'X';
+            ruch(tablica_wynikow, znak);
+            system("cls");
+            continue;
+        }
+
+        if (licznik_ruchow % 2 != 0) { // ruch kó³ka
+            znak = 'O';
+
+            ruch(tablica_wynikow, znak);
+            system("cls");
+            continue;
+        }
+        licznik_ruchow++;
     }
 
-    plansza(tablica_wynikow);
-
+    
     return 0;
 }
