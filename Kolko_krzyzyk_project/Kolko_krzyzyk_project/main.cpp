@@ -36,17 +36,24 @@ int main()
 
 using namespace std;
 
-void plansza(vector <char> tablica){ //wypisywanie wyniku na planszy
-    for (int i = 0; i < 9; i++)
+void plansza(vector <char> tablica, int rozmiar){ //wypisywanie wyniku na planszy
+    for (int i = 0; i < rozmiar * rozmiar; i++)
     {
-        cout << tablica[i] << " ";
-        if(i == 2 || i == 5){
+        cout << tablica[i];
+        if (i + 1 % rozmiar != 0) {
+            cout << '|';
+        }
+        if(i % rozmiar-2 == 0 && i != (rozmiar * rozmiar) - 1 ){
+            cout << endl;
+            for (int j = 0; j < ( rozmiar * 2 ) - 3; j++) {
+                cout << "_ ";
+            }
             cout << endl;
         }
     }
 }
 
-void ruch(vector <char> tablica_wynikow, char znak){
+void ruch(vector <char> &tablica_wynikow, char znak){
     int miejsce;
     cout << "Podaj index pola";
     cin >> miejsce;
@@ -57,7 +64,11 @@ void ruch(vector <char> tablica_wynikow, char znak){
         cout << "Dane miejsce jest zajête!!!";
         ruch(tablica_wynikow, znak);
     }
-    plansza(tablica_wynikow);
+}
+
+void wygrana(bool wygrana, vector <char> &tablica_wynikow, char znak) {
+    //  TODO: uzupe³niæ funkcje sprawdzania wygranej po ruchu
+    // Sprawdzanie wiersza, kolumny i przek¹tnych dla danego ruchu ewentualnie sprawdzanie x+1 x-1 y-1 y+1 i przek¹tynych od postawionego znaku
 }
 
 
@@ -75,12 +86,13 @@ int main(){
     }
     
     while (wygrana == false){
-         // nadpisywanie tabeli
+        plansza(tablica_wynikow, rozmiar);// nadpisywanie tabeli
 
         if (licznik_ruchow % 2 == 0) { // ruch krzy¿yka
             znak = 'X';
             ruch(tablica_wynikow, znak);
             system("cls");
+            licznik_ruchow++;
             continue;
         }
 
@@ -89,9 +101,9 @@ int main(){
 
             ruch(tablica_wynikow, znak);
             system("cls");
+            licznik_ruchow++;
             continue;
         }
-        licznik_ruchow++;
     }
 
     
