@@ -1,35 +1,64 @@
-//ten super main którego musze zapisaæ
 #include <SFML/Graphics.hpp>
+#include "Field.h"
+#include <iostream>
 
-/*
+#include <vector>
+
+
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(400, 400), "Taka fajna dupa");
-    sf::RectangleShape pole1;
+    sf::RenderWindow window(sf::VideoMode(400, 400), "Kó³ko i krzy¿yk"); // tworzenie okna
 
-    kwadrat.setSize(sf::Vector2f(100,100));
-    kwadrat.setFillColor(sf::Color::Blue);
-    kwadrat.setPosition(sf::Vector2f(200,200));
-    kwadrat.setOrigin(kwadrat.getSize().x/2,kwadrat.getSize().y/2);
+    std::vector <Field*> pola;
+    int rozmiar = 6;
+    int x = 0;
+    int y = 0;
+    for (int i = 0; i < rozmiar * rozmiar; i++) 
+    {   
+        pola.push_back(new Field);
+        if (i % rozmiar == 0 && i != 0 ) {
+            x = 0;
+            y++;
+        }
+        pola[i]->setPosition(x * 31, y * 31);
+        x++;
+    }
+ // tworzenie obiektu klasy pole(Field)
 
-    while (window.isOpen())
+
+    while (window.isOpen()) // jeœli plik otwarty wykonuj
     {
-        sf::Event event; // klasa zdarzenia :) zdarzenia z okna odczytaj¹ sie w event 
-        while (window.pollEvent(event))
+        sf::Event event; // klasa zdarzenia, co zostanie wykonane zapisuje siê w obiekcie "event"
+        while (window.pollEvent(event)) // nas³uchiwanie zdarzeñ
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) // jeœli event ma typ Closed (zamkniêcie Xem) to zamknij okno
                 window.close();
         }
 
-        window.clear();  
-        window.draw(kwadrat);
-        window.display();
+        window.clear(); //czyszczenie okna
+        
 
+        for (int i = 0; i < rozmiar * rozmiar; i++)
+        {
+            window.draw(pola[i]->getButton());
+            window.draw(pola[i]->getText());
+        }
+
+
+        window.display(); // wyœwietlenie okna
+
+    }
+    
+    for (int i = 0; i < rozmiar * rozmiar; i++)
+    {
+        free(pola[i]);
     }
 
     return 0;
 }
-*/
+
+
+/*
 #include <iostream>
 #include <windows.h>
 #include <vector>
@@ -108,4 +137,4 @@ int main(){
 
     
     return 0;
-}
+}*/
