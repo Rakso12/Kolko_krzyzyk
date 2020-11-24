@@ -1,13 +1,14 @@
 #include "Field.h"
 
-Field::Field() {
-	button_text.setFillColor(sf::Color::Blue); // ustawienie koloru tla przycisku
-	button_text.setCharacterSize(15); // ustawienie wielkosci tekstu
+Field::Field() { // konstruktor obiektu klasy Field
+
+	button_text.setFillColor(sf::Color::Blue);
+	button_text.setCharacterSize(15);
 
 	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; } // ladowanie fontu dla tekstu na przycisku
 	button_text.setFont(button_text_font);
 
-	button_text.setString("X");
+	button_text.setString(" . ");
 
 	button.setSize(sf::Vector2f(30, 30));
 	button.setFillColor(sf::Color::White);
@@ -42,4 +43,8 @@ void Field::setPosition(int x, int y)
 /// <returns> tekstu obiektu / obiekt</returns>
 sf::Text Field::getText() {
 	return button_text;
+}
+
+void Field::setText(char text){
+	button_text.setString(text);
 }

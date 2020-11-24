@@ -18,4 +18,5 @@ public:
 	sf::RectangleShape getButton();
 	void setPosition(int x, int y);
 	sf::Text getText();
+	void setText(char text);
 };
