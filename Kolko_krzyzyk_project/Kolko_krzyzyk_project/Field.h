@@ -19,4 +19,7 @@ public:
 	void setPosition(int x, int y);
 	sf::Text getText();
 	void setText(char text);
+
+	bool hover;
+	sf::Color hoverColor;
 };

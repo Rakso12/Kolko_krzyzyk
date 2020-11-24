@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Move.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Move.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
