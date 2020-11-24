@@ -43,3 +43,9 @@ void Field::setPosition(int x, int y)
 sf::Text Field::getText(){
 	return button_text;
 }
+/*
+void Field::setText(char text){
+	button_text.setString(text);
+}
+*/
+

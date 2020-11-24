@@ -23,6 +23,9 @@ int main()
         pola[i]->setPosition(x * 31, y * 31);
         x++;
     }
+
+    
+
  // tworzenie obiektu klasy pole(Field)
 
 
@@ -43,7 +46,17 @@ int main()
             window.draw(pola[i]->getButton());
             window.draw(pola[i]->getText());
         }
+        window.display();
+        //pola[5]->setText('O');
+        sf::sleep( sf::seconds(1));
 
+        window.clear();
+
+        for (int i = 0; i < rozmiar * rozmiar; i++)
+        {
+            window.draw(pola[i]->getButton());
+            window.draw(pola[i]->getText());
+        }
 
         window.display(); // wyœwietlenie okna
 
