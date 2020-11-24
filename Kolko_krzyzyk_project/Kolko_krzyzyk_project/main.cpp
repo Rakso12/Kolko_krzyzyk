@@ -1,12 +1,10 @@
+//ten super main którego musze zapisaæ
 #include <SFML/Graphics.hpp>
-#include "Field.h"
-#include <iostream>
 
-#include <vector>
-
-
+/*
 int main()
 {
+<<<<<<< HEAD
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kó³ko i krzy¿yk"); // tworzenie okna
 
     std::vector <Field*> pola;
@@ -27,17 +25,26 @@ int main()
     
 
  // tworzenie obiektu klasy pole(Field)
+=======
+    sf::RenderWindow window(sf::VideoMode(400, 400), "Taka fajna dupa");
+    sf::RectangleShape pole1;
+>>>>>>> parent of e2272b3... dodanie klasy Field i rysowanie planszy
 
+    kwadrat.setSize(sf::Vector2f(100,100));
+    kwadrat.setFillColor(sf::Color::Blue);
+    kwadrat.setPosition(sf::Vector2f(200,200));
+    kwadrat.setOrigin(kwadrat.getSize().x/2,kwadrat.getSize().y/2);
 
-    while (window.isOpen()) // jeœli plik otwarty wykonuj
+    while (window.isOpen())
     {
-        sf::Event event; // klasa zdarzenia, co zostanie wykonane zapisuje siê w obiekcie "event"
-        while (window.pollEvent(event)) // nas³uchiwanie zdarzeñ
+        sf::Event event; // klasa zdarzenia :) zdarzenia z okna odczytaj¹ sie w event 
+        while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed) // jeœli event ma typ Closed (zamkniêcie Xem) to zamknij okno
+            if (event.type == sf::Event::Closed)
                 window.close();
         }
 
+<<<<<<< HEAD
         window.clear(); //czyszczenie okna
         
 
@@ -59,19 +66,17 @@ int main()
         }
 
         window.display(); // wyœwietlenie okna
+=======
+        window.clear();  
+        window.draw(kwadrat);
+        window.display();
+>>>>>>> parent of e2272b3... dodanie klasy Field i rysowanie planszy
 
-    }
-    
-    for (int i = 0; i < rozmiar * rozmiar; i++)
-    {
-        free(pola[i]);
     }
 
     return 0;
 }
-
-
-/*
+*/
 #include <iostream>
 #include <windows.h>
 #include <vector>
@@ -150,4 +155,4 @@ int main(){
 
     
     return 0;
-}*/
+}
