@@ -17,10 +17,14 @@ public:
 	Field(); // konstruktor
 	~Field(); // dekonstruktor
 
+	int pozycjaX, pozycjaY;
+
+	void setPozycja(int x, int y);
+
 	sf::RectangleShape getButton(); // daj wyglad
 	sf::Text getText(); // daj wyglad tekstu
 
 	void setPosition(int x, int y); // zmien pozycje na
 	void setText(char text); // ustaw tekst
-
+	
 };

@@ -1,2 +1,7 @@
 ﻿  Board.cpp
+D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Board.cpp(42,36): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
   Kolko_krzyzyk_project.vcxproj -> D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Debug\Kolko_krzyzyk_project.exe

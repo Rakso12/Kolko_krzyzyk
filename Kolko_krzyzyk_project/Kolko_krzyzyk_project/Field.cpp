@@ -36,6 +36,11 @@ sf::Text Field::getText() {
 	return button_text;
 }
 
+void Field::setPozycja(int x, int y){
+	pozycjaX = x;
+	pozycjaY = y;
+}
+
 sf::RectangleShape Field::getButton() {
 	return button;
 }

@@ -18,12 +18,16 @@ void Board::DrawBoard()
             y++;
         }
         pola[i]->setPosition(int(x * 31), int(y * 31));
+        pola[i]->setPozycja(int(x * 31), int(y * 31));
         x++;
     }
 
     // Obs³uga okna
     // -------------------------------------------------------------------------------------------------
 
+    sf::Vector2f pozycjamyszki;
+    sf::Vector2i pozycjam;
+    int xxx;
     while (window.isOpen())
     {
         sf::Event event;
@@ -31,6 +35,16 @@ void Board::DrawBoard()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseMoved) {
+                pozycjam = sf::Mouse::getPosition(window);
+                pozycjamyszki = window.mapPixelToCoords(pozycjam);
+                xxx = pozycjamyszki.x; // NIE DZIALA X -> Pozycja x myszzki DO NAPRAWY
+                    if (int(pozycjamyszki.x) >= 0 && int(pozycjamyszki.x) < 30)
+                    {
+                        // ta
+                    }
+            }
         }
 
         window.clear();
