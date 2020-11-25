@@ -9,17 +9,18 @@
 /// </summary>
 class Field
 {
-	sf::RectangleShape button;
-	sf::Text button_text;
-	sf::Font button_text_font;
+	sf::RectangleShape button; // wyglad - ksztalt
+	sf::Text button_text; // wyglad - tekst
+	sf::Font button_text_font; // czcionka
 
 public:
-	Field();
-	sf::RectangleShape getButton();
-	void setPosition(int x, int y);
-	sf::Text getText();
-	void setText(char text);
+	Field(); // konstruktor
+	~Field(); // dekonstruktor
 
-	bool hover;
-	sf::Color hoverColor;
+	sf::RectangleShape getButton(); // daj wyglad
+	sf::Text getText(); // daj wyglad tekstu
+
+	void setPosition(int x, int y); // zmien pozycje na
+	void setText(char text); // ustaw tekst
+
 };

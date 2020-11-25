@@ -1,5 +1,6 @@
+/*
 #include "Move.h"
 
-void Move::ruch(){
+void Move::ruch(char znak, int numer){
 	
-}
+}*/

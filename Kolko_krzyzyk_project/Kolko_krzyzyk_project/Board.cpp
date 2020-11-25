@@ -2,11 +2,12 @@
 
 void Board::DrawBoard()
 {
+    // Wstêpne tworzenie obiektów do planszy
+    // ------------------------------------------------------------------------------------------------
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kó³ko i krzy¿yk"); // tworzenie okna
+    
     std::vector <Field*> pola;
-
     int rozmiar = 7;
-   
     int x = 0;
     int y = 0;
     for (int i = 0; i < rozmiar * rozmiar; i++)
@@ -16,31 +17,34 @@ void Board::DrawBoard()
             x = 0;
             y++;
         }
-        pola[i]->setPosition(x * 31, y * 31);
+        pola[i]->setPosition(int(x * 31), int(y * 31));
         x++;
     }
-    while (window.isOpen()) // jeœli plik otwarty wykonuj
+
+    // Obs³uga okna
+    // -------------------------------------------------------------------------------------------------
+
+    while (window.isOpen())
     {
-        sf::Event event; // klasa zdarzenia, co zostanie wykonane zapisuje siê w obiekcie "event"
-        while (window.pollEvent(event)) // nas³uchiwanie zdarzeñ
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed) // jeœli event ma typ Closed (zamkniêcie Xem) to zamknij okno
+            if (event.type == sf::Event::Closed)
                 window.close();
         }
 
         window.clear();
-        pola[4]->setText('0');
+
+        pola[2]->setText('X');
+        pola[3]->setText('O');
+
+        // Rysowanie pól ze znakami
         for (int i = 0; i < rozmiar * rozmiar; i++)
         {
             window.draw(pola[i]->getButton());
             window.draw(pola[i]->getText());
         }
-
         window.display(); // wyœwietlenie okna
     }
-
-    for (int i = 0; i < rozmiar * rozmiar; i++)
-    {
-        free(pola[i]);
-    }
+    // zwalnianie pamieci TODO
 }

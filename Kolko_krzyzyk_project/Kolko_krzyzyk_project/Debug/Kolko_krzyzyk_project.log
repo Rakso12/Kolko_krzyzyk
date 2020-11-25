@@ -1,4 +1,2 @@
-﻿  Field.cpp
-D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(33,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(33,26): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Board.cpp
   Kolko_krzyzyk_project.vcxproj -> D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Debug\Kolko_krzyzyk_project.exe

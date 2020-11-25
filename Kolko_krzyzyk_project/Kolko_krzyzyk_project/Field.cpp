@@ -1,11 +1,11 @@
 #include "Field.h"
 
-Field::Field() { // konstruktor obiektu klasy Field
+Field::Field() {
 
 	button_text.setFillColor(sf::Color::Blue);
 	button_text.setCharacterSize(15);
 
-	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; } // ladowanie fontu dla tekstu na przycisku
+	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; }
 	button_text.setFont(button_text_font);
 
 	button_text.setString(" . ");
@@ -14,37 +14,29 @@ Field::Field() { // konstruktor obiektu klasy Field
 	button.setFillColor(sf::Color::White);
 }
 
-/// <summary>
-/// Funkcja klasy Field zwracajaca obiekt przycisku
-/// </summary>
-/// <returns> przycisk / obiekt</returns>
-sf::RectangleShape Field::getButton() {
-	return button;
+Field::~Field()
+{
+
 }
 
-
-/// <summary>
-/// Ustawienie pozycji przycisku na planszy
-/// </summary>
-/// <param name="x"> wartosc na osi Xow </param>
-/// <param name="y"> wartosc na osi Ykow </param>
 void Field::setPosition(int x, int y)
 {
-	button.setPosition((int)x, (int)y); // 100, 100
-	//button_text.setOrigin(15, 15);
+	button.setPosition((int)x, (int)y);
 	button_text.setPosition(
 		button.getPosition().x + button.getSize().x / 2 - button_text.getGlobalBounds().width / 2,
 		button.getPosition().y + button.getSize().y / 2 - button_text.getGlobalBounds().height);
 }
 
-/// <summary>
-/// Funkcja klasy Field zwracajaca obiekt tekstu na przycisku
-/// </summary>
-/// <returns> tekstu obiektu / obiekt</returns>
+void Field::setText(char text) {
+	button_text.setString(text);
+}
+
+
 sf::Text Field::getText() {
 	return button_text;
 }
 
-void Field::setText(char text){
-	button_text.setString(text);
+sf::RectangleShape Field::getButton() {
+	return button;
 }
+
