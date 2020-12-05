@@ -8,7 +8,7 @@ Field::Field() {
 	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; }
 	button_text.setFont(button_text_font);
 
-	button_text.setString(" . ");
+	button_text.setString(" _ ");
 
 	button.setSize(sf::Vector2f(30, 30));
 	button.setFillColor(sf::Color::White);

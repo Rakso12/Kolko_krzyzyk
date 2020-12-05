@@ -1,7 +1,7 @@
 ﻿  Board.cpp
-D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Board.cpp(42,36): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
+  Field.cpp
+D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(24,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(24,26): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  main.cpp
+  Generowanie kodu...
   Kolko_krzyzyk_project.vcxproj -> D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Debug\Kolko_krzyzyk_project.exe

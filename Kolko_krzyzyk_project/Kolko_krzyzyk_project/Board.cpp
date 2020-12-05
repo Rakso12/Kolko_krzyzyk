@@ -1,25 +1,25 @@
 #include "Board.h"
+#include <typeinfo>
 
 void Board::DrawBoard()
 {
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kó³ko i krzy¿yk"); // tworzenie okna
-    
-    std::vector <Field*> pola;
-    int rozmiar = 7;
-    int x = 0;
-    int y = 0;
-    for (int i = 0; i < rozmiar * rozmiar; i++)
+
+    std::vector <std::vector <Field*>> pola;
+    int rozmiar = 6;
+
+    for (int i = 0; i < rozmiar; i++)
     {
-        pola.push_back(new Field);
-        if (i % rozmiar == 0 && i != 0) {
-            x = 0;
-            y++;
+        std::vector<Field*> wiersz;
+        for (int j = 0; j < rozmiar; j++) {
+            wiersz.push_back(new Field());
+            wiersz[j]->setPosition(j * 31, i * 31);
+            wiersz[j]->setPozycja(j * 31, i * 31);
         }
-        pola[i]->setPosition(int(x * 31), int(y * 31));
-        pola[i]->setPozycja(int(x * 31), int(y * 31));
-        x++;
+        pola.push_back(wiersz);
+        wiersz.clear();
     }
 
     // Obs³uga okna
@@ -27,7 +27,9 @@ void Board::DrawBoard()
 
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
-    int xxx;
+    int wsp_x = 0, wsp_y = 0;
+    char znak = 'X';
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -36,29 +38,31 @@ void Board::DrawBoard()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if (event.type == sf::Event::MouseMoved) {
+            // znajdywanie przycisku poprzez wspolzedne dzielone przez rozmiar przycisku
+            // takim sposobem odwoluje sie do przycisku po 1,2,3 a nie po szukaj x 100 razy i 30 ifow
+            if (event.type == sf::Event::MouseButtonPressed) {
                 pozycjam = sf::Mouse::getPosition(window);
                 pozycjamyszki = window.mapPixelToCoords(pozycjam);
-                xxx = pozycjamyszki.x; // NIE DZIALA X -> Pozycja x myszzki DO NAPRAWY
-                    if (int(pozycjamyszki.x) >= 0 && int(pozycjamyszki.x) < 30)
-                    {
-                        // ta
-                    }
+                wsp_x = (int) pozycjamyszki.x/31;
+                wsp_y = (int) pozycjamyszki.y/31;
+                
+                if(pozycjamyszki.x <= rozmiar * 31 && pozycjamyszki.y <= rozmiar * 31)
+                    pola[wsp_y][wsp_x]->setText(znak);
             }
         }
 
         window.clear();
 
-        pola[2]->setText('X');
-        pola[3]->setText('O');
-
         // Rysowanie pól ze znakami
-        for (int i = 0; i < rozmiar * rozmiar; i++)
+        for (int i = 0; i < rozmiar; i++)
         {
-            window.draw(pola[i]->getButton());
-            window.draw(pola[i]->getText());
+            for (int j = 0; j < rozmiar; j++) {
+                window.draw(pola[i][j]->getButton());
+                window.draw(pola[i][j]->getText());
+            }
         }
+
         window.display(); // wyœwietlenie okna
     }
-    // zwalnianie pamieci TODO
+    pola.clear();
 }

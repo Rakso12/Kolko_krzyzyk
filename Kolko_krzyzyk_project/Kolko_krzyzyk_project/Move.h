@@ -1,12 +1,10 @@
-/*
 #pragma once
 
 #include "Field.h"
+#include <vector>
 
 class Move
 {
-
-	void ruch(char znak, int numer);
+public:
+	void ruch(char znak, Field* index);
 };
-
-*/
