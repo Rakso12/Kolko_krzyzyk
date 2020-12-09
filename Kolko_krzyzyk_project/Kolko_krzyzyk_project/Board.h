@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Field.h"
+#include "Check.h"
 class Board
 {
 public:

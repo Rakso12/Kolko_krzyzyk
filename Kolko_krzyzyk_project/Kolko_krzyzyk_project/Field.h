@@ -12,6 +12,7 @@ class Field
 	sf::RectangleShape button; // wyglad - ksztalt
 	sf::Text button_text; // wyglad - tekst
 	sf::Font button_text_font; // czcionka
+	int available = 0;
 
 public:
 	Field(); // konstruktor
@@ -26,5 +27,6 @@ public:
 
 	void setPosition(int x, int y); // zmien pozycje na
 	void setText(char text); // ustaw tekst
-	
+	void setAvailable();
+	int isAvailable();
 };

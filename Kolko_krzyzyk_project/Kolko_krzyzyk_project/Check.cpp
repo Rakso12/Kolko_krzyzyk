@@ -1,14 +1,17 @@
-/*
 #include "Check.h"
+#include <iostream>
 
-int Check::czyWygrana(std::vector<Field> wyniki)
+int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 {
-	sf::String zmiX("X");
-	if (wyniki[1].getText() == zmiX) {
-		printf("nie");
+	for (int i = 0; i < rozmiar; i++)
+	{
+		for (int j = 0; j < rozmiar; j++)
+		{
+			if( pola[j][i]->getText().getString().toAnsiString() == "X") // Do poprawy warunek z sf::Text na chara czy coœ
+			{
+				
+			}
+		}
 	}
-
 	return 0;
 }
-
-*/

@@ -1,4 +1,3 @@
-/*
 #pragma once
 
 #include <vector>
@@ -8,6 +7,5 @@
 class Check
 {
 public:
-	int czyWygrana(std::vector <Field> wyniki);
+	int czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar);
 };
-*/

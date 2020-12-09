@@ -31,6 +31,15 @@ void Field::setText(char text) {
 	button_text.setString(text);
 }
 
+void Field::setAvailable(){
+	available = 1;
+}
+
+int Field::isAvailable() {
+	if (available == 1) { return 1;}
+	else { return 0; }
+}
+
 
 sf::Text Field::getText() {
 	return button_text;

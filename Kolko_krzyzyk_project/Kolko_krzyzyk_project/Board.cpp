@@ -5,7 +5,7 @@ void Board::DrawBoard()
 {
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
-    sf::RenderWindow window(sf::VideoMode(400, 400), "Kó³ko i krzy¿yk"); // tworzenie okna
+    sf::RenderWindow window(sf::VideoMode(400, 400), "Kolko i krzyzyk"); // tworzenie okna
 
     std::vector <std::vector <Field*>> pola;
     int rozmiar = 6;
@@ -25,10 +25,12 @@ void Board::DrawBoard()
     // Obs³uga okna
     // -------------------------------------------------------------------------------------------------
 
+    Check sprawdz;
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
     int wsp_x = 0, wsp_y = 0;
     char znak = 'X';
+    int licznik = 0;
 
     while (window.isOpen())
     {
@@ -38,16 +40,25 @@ void Board::DrawBoard()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            // znajdywanie przycisku poprzez wspolzedne dzielone przez rozmiar przycisku
-            // takim sposobem odwoluje sie do przycisku po 1,2,3 a nie po szukaj x 100 razy i 30 ifow
             if (event.type == sf::Event::MouseButtonPressed) {
                 pozycjam = sf::Mouse::getPosition(window);
                 pozycjamyszki = window.mapPixelToCoords(pozycjam);
                 wsp_x = (int) pozycjamyszki.x/31;
                 wsp_y = (int) pozycjamyszki.y/31;
                 
-                if(pozycjamyszki.x <= rozmiar * 31 && pozycjamyszki.y <= rozmiar * 31)
-                    pola[wsp_y][wsp_x]->setText(znak);
+                if(pozycjamyszki.x <= (rozmiar * 31)-1 && pozycjamyszki.y <= (rozmiar * 31)-1)
+                    if (pola[wsp_y][wsp_x]->isAvailable() == 0) {
+                        if (licznik % 2 == 0){
+                            pola[wsp_y][wsp_x]->setText('X');
+                        }
+                        if (licznik % 2 != 0) {
+                            pola[wsp_y][wsp_x]->setText('O');
+                        }
+                        pola[wsp_y][wsp_x]->setAvailable();
+                        licznik++;
+
+                        sprawdz.czyWygrana(pola, rozmiar);
+                    }
             }
         }
 
