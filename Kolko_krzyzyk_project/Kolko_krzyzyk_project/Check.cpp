@@ -49,25 +49,73 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 		}
 	}
 	
-	// sprawdzanie skosu od lewej
+	// sprawdzanie skosu od lewej w dó³ razem z przek¹tn¹
 
-	// DO ZROBIENIA SPRAWDZANIE PRZEK¥TNYCH POD I NAD / LEWA / PRAWA
-	/*
-	if (!tmp) {
-		for (int i = 0; i < rozmiar-1; i++)
-		{
-			if (pola[i+1][i]->getText().getString().toAnsiString() == "X")
-			{
-				licznik++;
-				if (licznik == ile_wygrywa) {
-					tmp = true;
+	for(int k = 0; k < rozmiar-2; k++){
+		for(int i = 0; i < rozmiar; i++){
+			for(int j = 0; j < rozmiar; j++){
+				if(k < rozmiar - j){
+					if(i == j + k){
+						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						{
+							licznik++;
+							if (licznik == ile_wygrywa) {
+								tmp = true;
+							}
+						}
+						else {
+							licznik = 0;
+						}
+					}
 				}
-			}
-			else {
-				licznik = 0;
 			}
 		}
 	}
+
+	// sprawdzanie skosu od lewej w górê
+
+	for (int k = 1; k < rozmiar - 2; k++) {
+		for (int i = 0; i < rozmiar; i++) {
+			for (int j = 0; j < rozmiar; j++) {
+				if (k < rozmiar - i) {
+					if (i + k == j) {
+						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						{
+							licznik++;
+							if (licznik == ile_wygrywa) {
+								tmp = true;
+							}
+						}
+						else {
+							licznik = 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*
+	for (int k = 1; k < rozmiar; k++) {
+		for (int i = 0; i < rozmiar; i++) {
+			for (int j = 0; j < rozmiar; j++) {
+				if (k < rozmiar - j) {
+					if (i == j + k) {
+						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						{
+							licznik++;
+							if (licznik == ile_wygrywa) {
+								tmp = true;
+							}
+						}
+						else {
+							licznik = 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	*/
 	std::cout << tmp << "wynik" << std::endl;
 
