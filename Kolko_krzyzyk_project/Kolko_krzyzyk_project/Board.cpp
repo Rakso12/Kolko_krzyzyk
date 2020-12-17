@@ -29,7 +29,7 @@ void Board::DrawBoard()
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
     int wsp_x = 0, wsp_y = 0;
-    char znak = 'X';
+    //char znak = 'X';
     int licznik = 0;
 
     while (window.isOpen())
