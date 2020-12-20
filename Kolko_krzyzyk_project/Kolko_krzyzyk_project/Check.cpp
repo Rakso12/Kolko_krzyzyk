@@ -1,7 +1,7 @@
 #include "Check.h"
 #include <iostream>
 
-int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
+void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::string znak)
 {
 	// sprawdzanie pionu
 
@@ -15,7 +15,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 		for (int i = 0; i < rozmiar; i++)
 		{
 			for (int j = 0; j < rozmiar; j++) {
-				if (pola[j][i]->getText().getString().toAnsiString() == "X")
+				if (pola[j][i]->getText().getString().toAnsiString() == znak)
 				{
 					licznik++;
 					if (licznik == ile_wygrywa) {
@@ -35,7 +35,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 		for (int i = 0; i < rozmiar; i++)
 		{
 			for (int j = 0; j < rozmiar; j++) {
-				if (pola[i][j]->getText().getString().toAnsiString() == "X")
+				if (pola[i][j]->getText().getString().toAnsiString() == znak)
 				{
 					licznik++;
 					if (licznik == ile_wygrywa) {
@@ -56,7 +56,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 			for(int j = 0; j < rozmiar; j++){
 				if(k < rozmiar - j){
 					if(i == j + k){
-						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
 							if (licznik == ile_wygrywa) {
@@ -79,7 +79,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 			for (int j = 0; j < rozmiar; j++) {
 				if (k < rozmiar - i) {
 					if (i + k == j) {
-						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
 							if (licznik == ile_wygrywa) {
@@ -102,7 +102,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 			for (int j = 0; j < rozmiar; j++) {
 				if (k < rozmiar) {
 					if (i + j - 2 - rozmiar / 2 == k) {
-						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
 							if (licznik == ile_wygrywa) {
@@ -125,7 +125,7 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 			for (int j = 0; j < rozmiar; j++) {
 				if (k < rozmiar) {
 					if (i + j == k) {
-						if (pola[i][j]->getText().getString().toAnsiString() == "X")
+						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
 							if (licznik == ile_wygrywa) {
@@ -141,7 +141,9 @@ int Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar)
 		}
 	}
 
-	std::cout << tmp << "wynik" << std::endl;
+	// zmiana ekranu przy wygranej
 
-	return 0;
+	if (tmp) {
+		std::cout << "Wygra³ gracz: " << znak ;
+	}
 }

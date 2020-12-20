@@ -3,6 +3,7 @@
 
 void Board::DrawBoard()
 {
+
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kolko i krzyzyk"); // tworzenie okna
@@ -50,14 +51,15 @@ void Board::DrawBoard()
                     if (pola[wsp_y][wsp_x]->isAvailable() == 0) {
                         if (licznik % 2 == 0){
                             pola[wsp_y][wsp_x]->setText('X');
+                            sprawdz.czyWygrana(pola, rozmiar, "X");
                         }
                         if (licznik % 2 != 0) {
                             pola[wsp_y][wsp_x]->setText('O');
+                            sprawdz.czyWygrana(pola, rozmiar, "O");
                         }
                         pola[wsp_y][wsp_x]->setAvailable();
                         licznik++;
 
-                        sprawdz.czyWygrana(pola, rozmiar);
                     }
             }
         }

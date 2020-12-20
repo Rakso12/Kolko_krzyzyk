@@ -4,11 +4,12 @@
 
 #include "Field.h"
 #include "Board.h"
+#include "Menu.h"
 
 int main(){
     
-    Board* board = new Board();
-    board->DrawBoard();
+    Menu* board = new Menu();
+    board->drawMenu();
 
     return 0;
 }

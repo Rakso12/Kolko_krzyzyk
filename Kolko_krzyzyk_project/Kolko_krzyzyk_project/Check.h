@@ -7,5 +7,5 @@
 class Check
 {
 public:
-	int czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar);
+	void czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar, std::string znak);
 };
