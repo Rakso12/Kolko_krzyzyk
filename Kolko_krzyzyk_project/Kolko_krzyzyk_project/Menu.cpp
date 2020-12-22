@@ -2,56 +2,71 @@
 
 void Menu::drawMenu()
 {
-	sf::RenderWindow window(sf::VideoMode(400, 600), "Kolko i krzyzyk");
+	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
 	
 	// tworzenie przycisku Start
+	Button* button1 = new Button();
+	button1->setText("NEW GAME");
+	button1->setPosition(100,80);
+
+	// tworzenie przycisku Settings
+	Button* button2 = new Button();
+	button2->setText("SETTINGS");
+	button2->setPosition(100, 240);
 	
-	sf::RectangleShape button;
-	sf::Text button_text;
-	sf::Font button_text_font;
+	// tworzenie przycisku Exit Game
+	Button* button3 = new Button();
+	button3->setText("EXIT GAME");
+	button3->setPosition(100, 400);
 
-	button.setSize(sf::Vector2f(200, 140));
-	button.setFillColor(sf::Color::White);
-	button.setPosition(sf::Vector2f(100, 100));
-	
-	button_text.setPosition(
-		button.getPosition().x - button_text.getGlobalBounds().width / 2,
-		button.getPosition().y - button_text.getGlobalBounds().height / 2);
-	button_text.setFillColor(sf::Color::Blue);
-	button_text.setCharacterSize(30);
-	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; }
-	button_text.setFont(button_text_font);
-	button_text.setString(" START ");
-
-
+	// tworzenie wykorzystywanych pozniej zmiennych pozycji
 	sf::Vector2f pozycjamyszki;
 	sf::Vector2i pozycjam;
+
+	// tworzenie obiektów do odwo³añ w obs³udze przycisków
 	Board* board = new Board();
-	
 
 	while (window.isOpen())
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
+			// Obs³uga przycisku zamkniêcia
 			if (event.type == sf::Event::Closed)
 				window.close();
 
 			if (event.type == sf::Event::MouseButtonPressed) {
 				pozycjam = sf::Mouse::getPosition(window);
 				pozycjamyszki = window.mapPixelToCoords(pozycjam);
-				if (pozycjamyszki.x <= 300 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 140 && pozycjamyszki.y > 100)
+				// Obs³uga przycisku New Game
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 180 && pozycjamyszki.y > 80)
 				{
 					window.close();
 					board->DrawBoard();
 				}
+				// Obs³uga przycisku Settings
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
+				{
+					window.close();
+				}
+				// Obs³uga przycisku Exit Game
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 500 && pozycjamyszki.y > 400)
+				{
+					window.close();
+				}
 			}
 		}
 
+		// Rysowanie menu
 		window.clear();
-		window.draw(button);
-		window.draw(button_text);
+		window.draw(button1->getButton());
+		window.draw(button1->getText());
+
+		window.draw(button2->getButton());
+		window.draw(button2->getText());
+
+		window.draw(button3->getButton());
+		window.draw(button3->getText());
 		window.display();
-		
 	}
 }
