@@ -3,13 +3,13 @@
 
 void Board::DrawBoard()
 {
-
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kolko i krzyzyk"); // tworzenie okna
 
     std::vector <std::vector <Field*>> pola;
     int rozmiar = 6;
+    int ile_pol = rozmiar * rozmiar;
 
     for (int i = 0; i < rozmiar; i++)
     {
@@ -27,6 +27,7 @@ void Board::DrawBoard()
     // -------------------------------------------------------------------------------------------------
 
     Check sprawdz;
+    End koniec;
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
     int wsp_x = 0, wsp_y = 0;
@@ -47,20 +48,29 @@ void Board::DrawBoard()
                 wsp_x = (int) pozycjamyszki.x/31;
                 wsp_y = (int) pozycjamyszki.y/31;
                 
-                if(pozycjamyszki.x <= (rozmiar * 31)-1 && pozycjamyszki.y <= (rozmiar * 31)-1)
+                if (pozycjamyszki.x <= (rozmiar * 31) - 1 && pozycjamyszki.y <= (rozmiar * 31) - 1) {
                     if (pola[wsp_y][wsp_x]->isAvailable() == 0) {
-                        if (licznik % 2 == 0){
+                        if (licznik % 2 == 0) {
                             pola[wsp_y][wsp_x]->setText('X');
-                            sprawdz.czyWygrana(pola, rozmiar, "X");
+                            if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
+                                //window.close();
+                                koniec.drawEnd("X");
+                            }
                         }
                         if (licznik % 2 != 0) {
                             pola[wsp_y][wsp_x]->setText('O');
-                            sprawdz.czyWygrana(pola, rozmiar, "O");
+                            if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
+                                //window.close();
+                                koniec.drawEnd("O");
+                            }
                         }
                         pola[wsp_y][wsp_x]->setAvailable();
                         licznik++;
-
+                        if (licznik == ile_pol) {
+                            koniec.drawEnd("NIKT");
+                        }
                     }
+                }
             }
         }
 

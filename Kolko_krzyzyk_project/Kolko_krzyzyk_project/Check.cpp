@@ -1,12 +1,17 @@
 #include "Check.h"
 #include <iostream>
 
-void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::string znak)
+/// <summary>
+/// Funkcja sprawdzajaca plansze czy  znajduja sie w niej wygrane ciagi znakow
+/// kolka lub krzyza o liczebnosci rownej ustalonej liczbie wygrywajacego ciagu 
+/// </summary>
+/// <param name="pola"> Vektor zawierajacy plansze </param>
+/// <param name="rozmiar"> Rozmiar boku planszy </param>
+/// <param name="znak"> Aktualnie sprawdzany/wstawiany znak </param>
+bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::string znak)
 {
-	// sprawdzanie pionu
-
 	int licznik = 0;
-	int ile_wygrywa = 3;
+	int ile_wygrywa = getIleWygrywa();
 	bool tmp = false;
 
 	// sprawdzanie pionu
@@ -18,17 +23,18 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				if (pola[j][i]->getText().getString().toAnsiString() == znak)
 				{
 					licznik++;
-					if (licznik == ile_wygrywa) {
-						tmp = true;
+					if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+						return true;
 					}
 				}
 				else {
 					licznik = 0;
 				}
 			}
+			licznik = 0;
 		}
 	}
-
+	licznik = 0;
 	// sprawdzanie poziomu
 
 	if (!tmp) {
@@ -38,17 +44,18 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				if (pola[i][j]->getText().getString().toAnsiString() == znak)
 				{
 					licznik++;
-					if (licznik == ile_wygrywa) {
-						tmp = true;
+					if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+						return true;
 					}
 				}
 				else {
 					licznik = 0;
 				}
 			}
+			licznik = 0;
 		}
 	}
-	
+	licznik = 0;
 	// sprawdzanie skosu od lewej w dó³ razem z przek¹tn¹
 
 	for(int k = 0; k < rozmiar - 2; k++){
@@ -59,8 +66,8 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
-							if (licznik == ile_wygrywa) {
-								tmp = true;
+							if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+								return true;
 							}
 						}
 						else {
@@ -69,9 +76,10 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 					}
 				}
 			}
+			licznik = 0;
 		}
 	}
-
+	licznik = 0;
 	// sprawdzanie skosu od lewej w górê
 
 	for (int k = 1; k < rozmiar - 2; k++) {
@@ -82,8 +90,8 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
-							if (licznik == ile_wygrywa) {
-								tmp = true;
+							if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+								return true;
 							}
 						}
 						else {
@@ -93,8 +101,9 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				}
 			}
 		}
+		licznik = 0;
 	}
-
+	licznik = 0;
 	// sprawdzanie skosu od prawej w dó³
 
 	for (int k = 2; k < rozmiar; k++) {
@@ -105,8 +114,8 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
-							if (licznik == ile_wygrywa) {
-								tmp = true;
+							if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+								return true;
 							}
 						}
 						else {
@@ -116,8 +125,9 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				}
 			}
 		}
+		licznik = 0;
 	}
-
+	licznik = 0;
 	// sprawdzanie skosu od prawej w górê razem z przek¹tn¹
 	
 	for (int k = 2; k < rozmiar; k++) {
@@ -128,8 +138,8 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 						if (pola[i][j]->getText().getString().toAnsiString() == znak)
 						{
 							licznik++;
-							if (licznik == ile_wygrywa) {
-								tmp = true;
+							if (licznik == ile_wygrywa) { // sprawdzanie czy ilosc znakow w ciagu jest rowny ilosci wygrywajacej
+								return true;
 							}
 						}
 						else {
@@ -139,11 +149,29 @@ void Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				}
 			}
 		}
+		licznik = 0;
 	}
-
+	licznik = 0;
 	// zmiana ekranu przy wygranej
-
-	if (tmp) {
-		std::cout << "Wygra³ gracz: " << znak ;
-	}
+	return false;
 }
+
+/// <summary>
+/// Funkcja ustawiajaca ilosc - dlugosc wygrywajacego ciagu znakow
+/// </summary>
+/// <param name="liczba">Dlugosc wygrywajacego ciagu</param>
+void Check::setIleWygrywa(int liczba)
+{
+	ile_wygrywa = liczba;
+}
+
+/// <summary>
+/// Funkcja zwracajaca wartosc dlugosci wygrywajacego ciagu znakow
+/// </summary>
+/// <returns>Dlugosc wygrywajacego ciagu</returns>
+int Check::getIleWygrywa()
+{
+	return ile_wygrywa;
+}
+
+
