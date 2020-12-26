@@ -1,14 +1,16 @@
 #include "Board.h"
 #include <typeinfo>
+#include <SFML/System.hpp>
 
 void Board::DrawBoard()
 {
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
     sf::RenderWindow window(sf::VideoMode(400, 400), "Kolko i krzyzyk"); // tworzenie okna
-
+    window.setVerticalSyncEnabled(true);
+    window.setFramerateLimit(5);
     std::vector <std::vector <Field*>> pola;
-    int rozmiar = 6;
+    int rozmiar = 10;
     int ile_pol = rozmiar * rozmiar;
 
     for (int i = 0; i < rozmiar; i++)
@@ -52,14 +54,14 @@ void Board::DrawBoard()
                     if (pola[wsp_y][wsp_x]->isAvailable() == 0) {
                         if (licznik % 2 == 0) {
                             pola[wsp_y][wsp_x]->setText('X');
-                            if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
+                            if (sprawdz.czyWygrana(pola, rozmiar, "X", wsp_x, wsp_y)) {
                                 //window.close();
                                 koniec.drawEnd("X");
                             }
                         }
                         if (licznik % 2 != 0) {
                             pola[wsp_y][wsp_x]->setText('O');
-                            if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
+                            if (sprawdz.czyWygrana(pola, rozmiar, "O", wsp_x, wsp_y)) {
                                 //window.close();
                                 koniec.drawEnd("O");
                             }
