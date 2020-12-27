@@ -13,8 +13,8 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 	int ile_wygrywa = getIleWygrywa();
 	bool tmp = false;
 
-	// sprawdzanie srodka
-	if(x != 0 && x != rozmiar && y != 0 && y != rozmiar){	
+	// sprawdzanie strefy niebieskiej
+	if(x > 1 && x < rozmiar - 2 && y > 1 && y < rozmiar - 2){	
 		if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
@@ -48,22 +48,136 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			) // P8
 			return true;
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
-			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak
-			) // P1X
+			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
-			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak
-			) // P2X
+			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
-			pola[y + 1][x]->getText().getString().toAnsiString() == znak
-			) // P3X
+			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
-			pola[y][x + 1]->getText().getString().toAnsiString() == znak
-			) // P4X
+			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
 	}
+
+	// sprawdzanie strefy zielonej
+	if (x > 1 && x < rozmiar - 2 && y == 1) {
+		if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x - 2]->getText().getString().toAnsiString() == znak
+			) // P1
+			return true;
+		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 2]->getText().getString().toAnsiString() == znak
+			) // P2
+			return true;
+		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y + 2][x]->getText().getString().toAnsiString() == znak
+			) // P4
+			return true;
+		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
+			) // P7
+			return true;
+		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
+			) // P8
+			return true;
+		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
+			return true;
+
+		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
+			return true;
+		
+		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
+			return true;
+		
+		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
+			return true;
+	}
+
+	// sprawdzanie strefy fioletowej
+	if (x > 1 && x < rozmiar - 2 && y == rozmiar - 2) {
+		if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x - 2]->getText().getString().toAnsiString() == znak
+			) // P1
+			return true;
+		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 2]->getText().getString().toAnsiString() == znak
+			) // P2
+			return true;
+		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y - 2][x]->getText().getString().toAnsiString() == znak
+			) // P3
+			return true;
+		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
+			) // P5
+			return true;
+		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
+			) // P6
+			return true;
+		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
+			return true;
+
+		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
+			return true;
+
+		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
+			return true;
+
+		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
+			return true;
+	}
+
+	// sprawdzanie strefy szarej
+	if (y > 1 && y < rozmiar - 2 && x == 1) {
+		if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 2]->getText().getString().toAnsiString() == znak
+			) // P2
+			return true;
+		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y - 2][x]->getText().getString().toAnsiString() == znak
+			) // P3
+			return true;
+		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y + 2][x]->getText().getString().toAnsiString() == znak
+			) // P4
+			return true;
+		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
+			) // P6
+			return true;
+		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
+			) // P8
+			return true;
+		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
+			return true;
+		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
+			return true;
+		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
+			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
+			return true;
+		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
+			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
+			return true;
+	}
+
 	return false;
 }
 
