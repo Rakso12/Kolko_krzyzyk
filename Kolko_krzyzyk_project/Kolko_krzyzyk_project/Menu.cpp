@@ -3,7 +3,8 @@
 void Menu::drawMenu()
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
-	
+	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(5);
 	// tworzenie przycisku Start
 	Button* button1 = new Button();
 	button1->setText("NEW GAME");
@@ -25,6 +26,7 @@ void Menu::drawMenu()
 
 	// tworzenie obiektów do odwo³añ w obs³udze przycisków
 	Board* board = new Board();
+	Settings* settings = new Settings();
 
 	while (window.isOpen())
 	{
@@ -48,6 +50,7 @@ void Menu::drawMenu()
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
 				{
 					window.close();
+					settings->drawSetting();
 				}
 				// Obs³uga przycisku Exit Game
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 500 && pozycjamyszki.y > 400)

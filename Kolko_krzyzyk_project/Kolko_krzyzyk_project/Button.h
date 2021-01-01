@@ -17,4 +17,3 @@ public:
 	sf::Text getText();
 	sf::RectangleShape getButton();
 };
-

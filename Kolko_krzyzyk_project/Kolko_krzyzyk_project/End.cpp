@@ -3,7 +3,8 @@
 void End::drawEnd(std::string znak)
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
-
+	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(5);
 	// Wyglad pokazywania wyniku
 	Button* button1 = new Button();
 	button1->setText("WINNER: " + znak);

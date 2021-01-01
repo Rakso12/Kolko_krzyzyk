@@ -1,2 +1,8 @@
-﻿  Check.cpp
+﻿  Board.cpp
+  Check.cpp
+  End.cpp
+  Menu.cpp
+  Settings.cpp
+  main.cpp
+  Generowanie kodu...
   Kolko_krzyzyk_project.vcxproj -> D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Debug\Kolko_krzyzyk_project.exe

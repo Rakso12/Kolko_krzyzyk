@@ -10,5 +10,3 @@ class End
 public:
 	void drawEnd(std::string znak);
 };
-
-

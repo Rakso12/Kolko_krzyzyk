@@ -33,7 +33,6 @@ void Board::DrawBoard()
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
     int wsp_x = 0, wsp_y = 0;
-    //char znak = 'X';
     int licznik = 0;
 
     while (window.isOpen())
@@ -55,14 +54,14 @@ void Board::DrawBoard()
                         if (licznik % 2 == 0) {
                             pola[wsp_y][wsp_x]->setText('X');
                             if (sprawdz.czyWygrana(pola, rozmiar, "X", wsp_x, wsp_y)) {
-                                //window.close();
+                                window.close();
                                 koniec.drawEnd("X");
                             }
                         }
                         if (licznik % 2 != 0) {
                             pola[wsp_y][wsp_x]->setText('O');
                             if (sprawdz.czyWygrana(pola, rozmiar, "O", wsp_x, wsp_y)) {
-                                //window.close();
+                                window.close();
                                 koniec.drawEnd("O");
                             }
                         }

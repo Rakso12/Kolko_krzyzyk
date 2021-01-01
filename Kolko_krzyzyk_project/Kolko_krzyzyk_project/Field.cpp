@@ -79,4 +79,3 @@ void Field::setPozycja(int x, int y){
 sf::RectangleShape Field::getButton() {
 	return button;
 }
-
