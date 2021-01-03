@@ -2,15 +2,15 @@
 #include <typeinfo>
 #include <SFML/System.hpp>
 
-void Board::DrawBoard()
+void Board::DrawBoard(int size)
 {
     // Wstêpne tworzenie obiektów do planszy
     // ------------------------------------------------------------------------------------------------
-    sf::RenderWindow window(sf::VideoMode(400, 400), "Kolko i krzyzyk"); // tworzenie okna
+    sf::RenderWindow window(sf::VideoMode(size * 31, size * 31), "Kolko i krzyzyk"); // tworzenie okna
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(5);
     std::vector <std::vector <Field*>> pola;
-    int rozmiar = 10;
+    int rozmiar = size;
     int ile_pol = rozmiar * rozmiar;
 
     for (int i = 0; i < rozmiar; i++)
@@ -30,6 +30,7 @@ void Board::DrawBoard()
 
     Check sprawdz;
     End koniec;
+    AiLow ailow;
     sf::Vector2f pozycjamyszki;
     sf::Vector2i pozycjam;
     int wsp_x = 0, wsp_y = 0;
@@ -46,9 +47,9 @@ void Board::DrawBoard()
             if (event.type == sf::Event::MouseButtonPressed) {
                 pozycjam = sf::Mouse::getPosition(window);
                 pozycjamyszki = window.mapPixelToCoords(pozycjam);
-                wsp_x = (int) pozycjamyszki.x/31;
-                wsp_y = (int) pozycjamyszki.y/31;
-                
+                wsp_x = (int)pozycjamyszki.x / 31;
+                wsp_y = (int)pozycjamyszki.y / 31;
+
                 if (pozycjamyszki.x <= (rozmiar * 31) - 1 && pozycjamyszki.y <= (rozmiar * 31) - 1) {
                     if (pola[wsp_y][wsp_x]->isAvailable() == 0) {
                         if (licznik % 2 == 0) {
@@ -57,16 +58,17 @@ void Board::DrawBoard()
                                 window.close();
                                 koniec.drawEnd("X");
                             }
-                        }
+                            ailow.moveAiLow(pola, size);
+                        }/*
                         if (licznik % 2 != 0) {
                             pola[wsp_y][wsp_x]->setText('O');
                             if (sprawdz.czyWygrana(pola, rozmiar, "O", wsp_x, wsp_y)) {
                                 window.close();
                                 koniec.drawEnd("O");
                             }
-                        }
+                        }*/
                         pola[wsp_y][wsp_x]->setAvailable();
-                        licznik++;
+                        licznik+2;
                         if (licznik == ile_pol) {
                             koniec.drawEnd("NIKT");
                         }

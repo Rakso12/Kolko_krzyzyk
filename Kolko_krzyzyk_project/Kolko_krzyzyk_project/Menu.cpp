@@ -44,7 +44,7 @@ void Menu::drawMenu()
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 180 && pozycjamyszki.y > 80)
 				{
 					window.close();
-					board->DrawBoard();
+					board->DrawBoard(10);
 				}
 				// Obs³uga przycisku Settings
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)

@@ -2,6 +2,10 @@
 
 void Settings::drawSetting()
 {
+	// tworzenie obiektów do odwo³añ w obs³udze przycisków
+	Board* board = new Board();
+	Settings* settings = new Settings();
+
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(5);
@@ -17,12 +21,13 @@ void Settings::drawSetting()
 
 	// tworzenie przycisku Settings
 	Button* button3 = new Button();
-	button3->setText("ROZMIAR++");
+	std::string roz = "SIZE = " + std::to_string(getRozmiar());
+	button3->setText(roz);
 	button3->setPosition(100, 240);
 
 	// tworzenie przycisku Exit Game
 	Button* button4 = new Button();
-	button4->setText("ROZMOWA--");
+	button4->setText("     UP   |  DOWN ");
 	button4->setPosition(100, 350);
 
 	// tworzenie przycisku Exit Game
@@ -34,9 +39,6 @@ void Settings::drawSetting()
 	sf::Vector2f pozycjamyszki;
 	sf::Vector2i pozycjam;
 
-	// tworzenie obiektów do odwo³añ w obs³udze przycisków
-	Board* board = new Board();
-	Settings* settings = new Settings();
 
 	while (window.isOpen())
 	{
@@ -51,10 +53,11 @@ void Settings::drawSetting()
 				pozycjam = sf::Mouse::getPosition(window);
 				pozycjamyszki = window.mapPixelToCoords(pozycjam);
 
-				// Obs³uga przycisku trzyWygrywa
+				// Obs³uga przycisku NEW GAME
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 120 && pozycjamyszki.y > 20)
 				{
-					settings->trzyWygrywa();
+					window.close();
+					board->DrawBoard(settings->rozmiar);
 				}
 				// Obs³uga przycisku piecWygrywa
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
@@ -62,14 +65,18 @@ void Settings::drawSetting()
 					settings->piecWygrywa();
 				}
 				// Obs³uga przycisku rozmiar++
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
+				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
 				{
-					settings->rozmiar++;
+					settings->up(settings);
+					roz = "SIZE = " + std::to_string(settings->getRozmiar());
+					button3->setText(roz);
 				}
 				// Obs³uga przycisku rozmiar--
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 250 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
 				{
-					settings->rozmiar--;
+					settings->down(settings);
+					roz = "SIZE = " + std::to_string(settings->getRozmiar());
+					button3->setText(roz);
 				}
 				// Obs³uga przycisku Exit Game
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 560 && pozycjamyszki.y > 460)
@@ -111,4 +118,19 @@ void Settings::piecWygrywa()
 int Settings::getRozmiar()
 {
 	return rozmiar;
+}
+
+void Settings::up(Settings* settings)
+{
+	if (settings->rozmiar >= 10 && settings->rozmiar < 30) 
+	{
+		settings->rozmiar = settings->rozmiar + 1;
+	}
+}
+
+void Settings::down(Settings* settings)
+{
+	if (settings->rozmiar > 10) {
+		settings->rozmiar = settings->rozmiar - 1;
+	}
 }

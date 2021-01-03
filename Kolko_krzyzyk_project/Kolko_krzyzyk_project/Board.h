@@ -4,9 +4,10 @@
 #include "Field.h"
 #include "Check.h"
 #include "End.h"
+#include "AiLow.h"
 
 class Board
 {
 public:
-	void DrawBoard();
+	void DrawBoard(int size);
 };
