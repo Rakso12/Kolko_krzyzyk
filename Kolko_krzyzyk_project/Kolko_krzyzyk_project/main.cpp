@@ -1,15 +1,14 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <vector>
-
-#include "Field.h"
-#include "Board.h"
+#include "ResourceMenager.h"
 #include "Menu.h"
 
 int main(){
     
+    // tworzenie obiektu obiektu do obs³ugi zasobów
+    ResourceMenager resource;
+
+    // rozpoczêcie dzia³ania programu
     Menu* board = new Menu();
-    board->drawMenu();
+    board->drawMenu(&resource);
 
     return 0;
 }

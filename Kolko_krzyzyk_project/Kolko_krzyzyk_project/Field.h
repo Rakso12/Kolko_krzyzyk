@@ -3,6 +3,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include "ResourceMenager.h"
+
 
 /// <summary>
 /// Klasa pola na planszy
@@ -11,14 +13,14 @@ class Field
 {
 	sf::RectangleShape button; // wyglad - ksztalt
 	sf::Text button_text; // wyglad - tekst
-	sf::Font button_text_font; // czcionka
 	int available = 0;
+	
 
 public:
-	Field(); // konstruktor
+	Field(ResourceMenager* resource); // konstruktor
 	~Field(); // dekonstruktor
 
-	int pozycjaX, pozycjaY;
+	int pozycjaX = 0, pozycjaY = 0;
 
 	void setPozycja(int x, int y);
 

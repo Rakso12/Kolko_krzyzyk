@@ -1,13 +1,12 @@
 #include "Field.h"
 
 // Konstruktor obiektu Field ustawiaj¹cy wielkosci i wyglad pol na planszy 
-Field::Field() {
+Field::Field(ResourceMenager* resource) {
 
 	button_text.setFillColor(sf::Color::Blue);
 	button_text.setCharacterSize(15);
 
-	if (!button_text_font.loadFromFile("../Resources/arial.ttf")) { std::cout << "no i sie zepsulo..."; }
-	button_text.setFont(button_text_font);
+	button_text.setFont(*resource->getFont("../Resources/arial.ttf"));
 
 	button_text.setString(" _ ");
 

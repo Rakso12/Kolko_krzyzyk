@@ -5,9 +5,11 @@
 #include "Check.h"
 #include "End.h"
 #include "AiLow.h"
+#include "AiMedium.h"
+#include "ResourceMenager.h"
 
 class Board
 {
 public:
-	void DrawBoard(int size);
+	void DrawBoard(int size, int level, ResourceMenager* resource);
 };

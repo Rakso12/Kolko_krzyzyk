@@ -1,6 +1,6 @@
 #include "Settings.h"
 
-void Settings::drawSetting()
+void Settings::drawSetting(ResourceMenager* resource)
 {
 	// tworzenie obiektów do odwo³añ w obs³udze przycisków
 	Board* board = new Board();
@@ -8,32 +8,24 @@ void Settings::drawSetting()
 
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(5);
-	// tworzenie przycisku Start
-	Button* button1 = new Button();
-	button1->setText("TRZY WYGRA");
-	button1->setPosition(100, 20);
+	window.setFramerateLimit(10);
 
-	// tworzenie przycisku Settings
-	Button* button2 = new Button();
-	button2->setText("PIEC WYGRA");
-	button2->setPosition(100, 130);
-
-	// tworzenie przycisku Settings
-	Button* button3 = new Button();
 	std::string roz = "SIZE = " + std::to_string(getRozmiar());
-	button3->setText(roz);
-	button3->setPosition(100, 240);
+
+	// tworzenie przycisku Start
+	Button* button1 = new Button(resource, "GRAJ", sf::Vector2f(100, 20));
+	
+	// tworzenie przycisku Settings
+	Button* button2 = new Button(resource, " LOW | MEDIUM", sf::Vector2f(100, 130));
+
+	// tworzenie przycisku Settings
+	Button* button3 = new Button(resource, ("SIZE = " + std::to_string(getRozmiar())), sf::Vector2f(100, 240));
 
 	// tworzenie przycisku Exit Game
-	Button* button4 = new Button();
-	button4->setText("     UP   |  DOWN ");
-	button4->setPosition(100, 350);
+	Button* button4 = new Button(resource, "     UP   |  DOWN ", sf::Vector2f(100, 350));
 
 	// tworzenie przycisku Exit Game
-	Button* button5 = new Button();
-	button5->setText("EXIT GAME");
-	button5->setPosition(100, 460);
+	Button* button5 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 460));
 
 	// tworzenie wykorzystywanych pozniej zmiennych pozycji
 	sf::Vector2f pozycjamyszki;
@@ -57,12 +49,19 @@ void Settings::drawSetting()
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 120 && pozycjamyszki.y > 20)
 				{
 					window.close();
-					board->DrawBoard(settings->rozmiar);
+					board->DrawBoard(settings->rozmiar, 1, resource);
 				}
-				// Obs³uga przycisku piecWygrywa
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
+				// Obs³uga przycisku low level
+				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
 				{
-					settings->piecWygrywa();
+					window.close();
+					board->DrawBoard(settings->rozmiar, 2, resource);
+				}
+				// Obs³uga przycisku medium level
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 250 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
+				{
+					window.close();
+					board->DrawBoard(settings->rozmiar, 3, resource);
 				}
 				// Obs³uga przycisku rozmiar++
 				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)

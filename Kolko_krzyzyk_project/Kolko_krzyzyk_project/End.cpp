@@ -1,24 +1,19 @@
 #include "End.h"
 
-void End::drawEnd(std::string znak)
+void End::drawEnd(std::string znak, ResourceMenager* resource)
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(5);
+	window.setFramerateLimit(2);
+
 	// Wyglad pokazywania wyniku
-	Button* button1 = new Button();
-	button1->setText("WINNER: " + znak);
-	button1->setPosition(100, 80);
+	Button* button1 = new Button(resource, ("WINNER: " + znak), sf::Vector2f(100, 80));
 
-	Button* button2 = new Button();
-	button2->setText("PLAY AGAIN");
-	button2->setPosition(100, 240);
+	// Przycisk PLAY AGAIN
+	Button* button2 = new Button(resource, "PLAY AGAIN", sf::Vector2f(100, 240));
 
-
-	// tworzenie przycisku Exit Game
-	Button* button3 = new Button();
-	button3->setText("EXIT GAME");
-	button3->setPosition(100, 450);
+	// Tworzenie przycisku Exit Game
+	Button* button3 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 450));
 
 	// tworzenie wykorzystywanych pozniej zmiennych pozycji
 	sf::Vector2f pozycjamyszki;
@@ -45,7 +40,7 @@ void End::drawEnd(std::string znak)
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
 				{
 					window.close();
-					menu.drawMenu();
+					menu.drawMenu(resource);
 				}
 
 				// Obs³uga przycisku Exit Game

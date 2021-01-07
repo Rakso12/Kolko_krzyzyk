@@ -1,24 +1,21 @@
 #include "Menu.h"
 
-void Menu::drawMenu()
+void Menu::drawMenu(ResourceMenager* resource)
 {
+
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(5);
+	window.setFramerateLimit(2);
 	// tworzenie przycisku Start
-	Button* button1 = new Button();
-	button1->setText("NEW GAME");
-	button1->setPosition(100,80);
+
+	Button* button1 = new Button(resource, "NEW GAME", sf::Vector2f(100,80));
 
 	// tworzenie przycisku Settings
-	Button* button2 = new Button();
-	button2->setText("SETTINGS");
-	button2->setPosition(100, 240);
+	Button* button2 = new Button(resource, "SETTINGS", sf::Vector2f(100, 240));
+
 	
 	// tworzenie przycisku Exit Game
-	Button* button3 = new Button();
-	button3->setText("EXIT GAME");
-	button3->setPosition(100, 400);
+	Button* button3 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 400));
 
 	// tworzenie wykorzystywanych pozniej zmiennych pozycji
 	sf::Vector2f pozycjamyszki;
@@ -44,13 +41,13 @@ void Menu::drawMenu()
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 180 && pozycjamyszki.y > 80)
 				{
 					window.close();
-					board->DrawBoard(10);
+					board->DrawBoard(10, 1, resource);
 				}
 				// Obs³uga przycisku Settings
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
 				{
 					window.close();
-					settings->drawSetting();
+					settings->drawSetting(resource);
 				}
 				// Obs³uga przycisku Exit Game
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 500 && pozycjamyszki.y > 400)
