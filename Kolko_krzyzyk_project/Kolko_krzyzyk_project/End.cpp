@@ -19,8 +19,7 @@ void End::drawEnd(std::string znak, ResourceMenager* resource)
 	sf::Vector2f pozycjamyszki;
 	sf::Vector2i pozycjam;
 
-	// tworzenie obiektów do odwo³añ w obs³udze przycisków
-	Board* board = new Board();
+
 	Menu menu;
 
 	while (window.isOpen())

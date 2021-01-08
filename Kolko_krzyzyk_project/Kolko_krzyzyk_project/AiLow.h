@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Board.h"
 #include "Field.h"
 
 class AiLow

@@ -3,6 +3,7 @@
 void AiMedium::moveAiMedium(std::vector<std::vector<Field*>> pola, int size)
 {
     Check sprawdz;
+
     int wsp_y = 0, wsp_x = 0;
     bool tmp = false;
 
@@ -32,27 +33,88 @@ int AiMedium::getY()
 {
     return wsp_y;
 }
-/*
-std::vector<int> AiMedium::minmax(std::vector<std::vector<Field*>> pola, int ile_ruchow, int size)
+
+sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> pola, int size, int wsp_x, int wsp_y, Check* check, char znak)
 {
-    std::vector<int> best = { -1, -1, -1000 };
+    int bestVal = - 1000;
+    sf::Vector2i bestMove;
+    bestMove.x = -1;
+    bestMove.y = -1;
 
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++) {
-                int x = cell[0];
-                int y = cell[1];
-                std::vector<int> score = minmax(pola, (ile_ruchow - 1), size);
-                score[0] = x;
-                score[1] = y;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (pola[i][j]->isAvailable() != 0) {
+                pola[i][j]->setText(znak);
 
-                if (score[2] < best[2]) 
-                {
-                    best = score
+                int moveVal = minMax(pola, 0, false, size, check);
+
+                pola[i][j]->setText('_');
+
+                if (moveVal > bestVal) {
+                    bestMove.x = i;
+                    bestMove.y = j;
+                    bestVal = moveVal;
                 }
             }
         }
-    return best;
+    }
+    return bestMove;
 }
 
-*/
+int AiMedium::minMax(std::vector<std::vector<Field*>> pola, int depth, bool isMax, int size, Check* check)
+{
+    int score = check->czyWygrana(pola, size, "X", wsp_x, wsp_y);
+    if (score == 1) {
+        return 1;
+    }
+    if (isMovesLeft(pola, size) == false) {
+        return 0;
+    }
+
+    if (isMax) {
+        int best = - 1000;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (pola[i][j]->isAvailable() != 0) {
+                    pola[i][j]->setText('O');
+
+                    best = std::max(best, minMax(pola, (depth + 1), !isMax, size, check));
+
+                    pola[i][j]->setText('_');
+                }
+            }
+        }
+        return best;
+    }
+    else {
+        int best = 1000;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (pola[i][j]->isAvailable() != 0) {
+                    pola[i][j]->setText('X');
+
+                    best = std::min(best, minMax(pola, (depth + 1), !isMax, size, check));
+
+                    pola[i][j]->setText('_');
+                }
+            }
+        }
+        return best;
+    }
+}
+
+
+
+bool AiMedium::isMovesLeft(std::vector<std::vector<Field*>> pola, int size)
+{
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (pola[i][j]->isAvailable() != 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

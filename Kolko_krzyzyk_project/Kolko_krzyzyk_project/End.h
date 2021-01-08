@@ -1,8 +1,5 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include "Board.h"
-#include "Button.h"
 #include "Menu.h"
 #include "ResourceMenager.h"
 

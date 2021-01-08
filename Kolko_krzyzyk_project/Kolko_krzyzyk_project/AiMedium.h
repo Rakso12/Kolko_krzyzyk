@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Board.h"
-#include "Field.h"
 #include "Check.h"
 
 class AiMedium
@@ -11,5 +9,7 @@ public:
 	void moveAiMedium(std::vector<std::vector<Field*>> pola, int size);
 	int getX();
 	int getY();
-	//std::vector<int> minmax(std::vector<std::vector<Field*>> pola, int ile_ruchow, int size);
+	sf::Vector2i findBestMove(std::vector<std::vector<Field*>>pola, int size, int wsp_x, int wsp_y, Check* check, char znak);
+	int minMax(std::vector<std::vector<Field*>>pola, int depth, bool isMax, int size, Check* check);
+	bool isMovesLeft(std::vector<std::vector<Field*>>pola, int size);
 };

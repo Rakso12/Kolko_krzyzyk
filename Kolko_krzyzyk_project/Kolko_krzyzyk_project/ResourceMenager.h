@@ -14,7 +14,5 @@ public:
 	ResourceMenager();
 	virtual ~ResourceMenager();
 	sf::Font* getFont(std::string name);
-
-
 };
 

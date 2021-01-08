@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <SFML/Graphics.hpp>
 #include "ResourceMenager.h"
 
 class Button

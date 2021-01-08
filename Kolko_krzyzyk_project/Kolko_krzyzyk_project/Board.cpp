@@ -114,7 +114,7 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                                     koniec.drawEnd("X", resource);
                                 }
                             }
-                            aimedium.moveAiMedium(pola, size);
+                            //aimedium.moveAiMedium(pola, size);
                             if (sprawdz.czyWygrana(pola, rozmiar, "O", aimedium.getX(), aimedium.getY())) {
                                 window.close();
                                 koniec.drawEnd("O", resource);

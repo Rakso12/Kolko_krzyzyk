@@ -1,5 +1,4 @@
-#include "ResourceMenager.h"
-#include "Menu.h"
+#include "End.h"
 
 int main(){
     
