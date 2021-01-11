@@ -19,34 +19,42 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
@@ -72,22 +80,27 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
@@ -113,22 +126,27 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
@@ -154,31 +172,39 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -192,31 +218,39 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -230,22 +264,27 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
@@ -259,22 +298,27 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
@@ -288,22 +332,27 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -317,18 +366,22 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
@@ -347,10 +400,12 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
@@ -365,10 +420,12 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
@@ -383,10 +440,12 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
@@ -401,10 +460,12 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
@@ -419,23 +480,29 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -449,23 +516,29 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -479,23 +552,29 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -509,23 +588,29 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak) // P1X
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak) // P2X
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -539,14 +624,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -560,14 +648,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -581,14 +672,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -602,14 +696,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y][x + 1]->getText().getString().toAnsiString() == znak) // P4X
 			return true;
@@ -624,14 +721,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P8
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
@@ -645,14 +745,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y + 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x]->getText().getString().toAnsiString() == znak
 			) // P4
 			return true;
+
 		else if (pola[y + 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y + 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P7
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
@@ -666,14 +769,17 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x + 2]->getText().getString().toAnsiString() == znak
 			) // P2
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x + 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x + 2]->getText().getString().toAnsiString() == znak
 			) // P6
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
@@ -687,26 +793,28 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			pola[y][x - 2]->getText().getString().toAnsiString() == znak
 			) // P1
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x]->getText().getString().toAnsiString() == znak
 			) // P3
 			return true;
+
 		else if (pola[y - 1][x - 1]->getText().getString().toAnsiString() == znak &&
 			pola[y - 2][x - 2]->getText().getString().toAnsiString() == znak
 			) // P5
 			return true;
+
 		else if (pola[y - 1][x]->getText().getString().toAnsiString() == znak &&
 			pola[y + 1][x]->getText().getString().toAnsiString() == znak) // P3X
 			return true;
 		else
 			return false;
 	}
-
 	return false;
 }
 
 /// <summary>
-/// Funkcja ustawiajaca ilosc - dlugosc wygrywajacego ciagu znakow
+/// Funkcja ustawiajaca dlugosc wygrywajacego ciagu znakow
 /// </summary>
 /// <param name="liczba">Dlugosc wygrywajacego ciagu</param>
 void Check::setIleWygrywa(int liczba)

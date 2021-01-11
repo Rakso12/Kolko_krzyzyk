@@ -1,30 +1,21 @@
 #include "Field.h"
 
-// Konstruktor obiektu Field ustawiaj¹cy wielkosci i wyglad pol na planszy 
 Field::Field(ResourceMenager* resource) {
 
 	button_text.setFillColor(sf::Color::Blue);
 	button_text.setCharacterSize(15);
-
 	button_text.setFont(*resource->getFont("../Resources/arial.ttf"));
-
 	button_text.setString(" _ ");
 
 	button.setSize(sf::Vector2f(30, 30));
 	button.setFillColor(sf::Color::White);
 }
 
-// Dekonstruktor
-Field::~Field()
-{
-	// TODO: czy tu coœ jest wgl potrzebne na ten moment?
-}
-
 /// <summary>
-/// Funkcja utawiajaca pozycje obiektu
+/// Funkcja utawiajaca pozycje obiektu przycisku wraz z jego tekstem
 /// </summary>
-/// <param name="x">startowa wspolzedna int x</param>
-/// <param name="y">startowa wspolzedna int y</param>
+/// <param name="x">startowa wspo³¿êdna int x</param>
+/// <param name="y">startowa wspo³¿êdna int y</param>
 void Field::setPosition(int x, int y)
 {
 	button.setPosition((int)x, (int)y);
@@ -34,9 +25,9 @@ void Field::setPosition(int x, int y)
 }
 
 /// <summary>
-/// Funkcja ustawiaj¹ca tekst w obiekcie podany jako argument
+/// Funkcja ustawiaj¹ca w obiekcie znak podany jako argument
 /// </summary>
-/// <param name="text">zmienna char znak</param>
+/// <param name="text">zmienna znaku aktualnego gracza</param>
 void Field::setText(char text) {
 	button_text.setString(text);
 }
@@ -63,12 +54,6 @@ int Field::isAvailable() {
 /// <returns>tekst pola</returns>
 sf::Text Field::getText() {
 	return button_text;
-}
-
-// TODO: po co to zrobilem...
-void Field::setPozycja(int x, int y){
-	pozycjaX = x;
-	pozycjaY = y;
 }
 
 /// <summary>

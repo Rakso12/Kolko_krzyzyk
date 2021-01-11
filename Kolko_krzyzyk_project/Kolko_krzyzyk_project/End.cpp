@@ -3,23 +3,16 @@
 void End::drawEnd(std::string znak, ResourceMenager* resource)
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
+
+	// Ograniczenie liczby klatek na sekundê
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(2);
 
-	// Wyglad pokazywania wyniku
 	Button* button1 = new Button(resource, ("WINNER: " + znak), sf::Vector2f(100, 80));
-
-	// Przycisk PLAY AGAIN
 	Button* button2 = new Button(resource, "PLAY AGAIN", sf::Vector2f(100, 240));
-
-	// Tworzenie przycisku Exit Game
 	Button* button3 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 450));
 
-	// tworzenie wykorzystywanych pozniej zmiennych pozycji
 	sf::Vector2f pozycjamyszki;
-	sf::Vector2i pozycjam;
-
-
 	Menu menu;
 
 	while (window.isOpen())
@@ -27,13 +20,11 @@ void End::drawEnd(std::string znak, ResourceMenager* resource)
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			// Obs³uga przycisku zamkniêcia
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) // Obs³uga przycisku zamkniêcia
 				window.close();
 
 			if (event.type == sf::Event::MouseButtonPressed) {
-				pozycjam = sf::Mouse::getPosition(window);
-				pozycjamyszki = window.mapPixelToCoords(pozycjam);
+				pozycjamyszki = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 	
 				// Obs³uga przycisku Play Again
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)

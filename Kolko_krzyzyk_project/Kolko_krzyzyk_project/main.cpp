@@ -1,13 +1,10 @@
 #include "End.h"
 
 int main(){
-    
-    // tworzenie obiektu obiektu do obs³ugi zasobów
-    ResourceMenager resource;
+    ResourceMenager resource; // Obiekt obs³ugi zasobów sfml'a
 
-    // rozpoczêcie dzia³ania programu
     Menu* board = new Menu();
-    board->drawMenu(&resource);
+    board->drawMenu(&resource); // Rozpoczêcie dzia³ania programu
 
     return 0;
 }

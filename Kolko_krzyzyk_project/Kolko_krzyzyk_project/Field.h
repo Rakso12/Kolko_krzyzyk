@@ -16,12 +16,6 @@ class Field
 
 public:
 	Field(ResourceMenager* resource); // konstruktor
-	~Field(); // dekonstruktor
-
-	int pozycjaX = 0, pozycjaY = 0;
-
-	void setPozycja(int x, int y);
-
 	sf::RectangleShape getButton(); // daj wyglad
 	sf::Text getText(); // daj wyglad tekstu
 

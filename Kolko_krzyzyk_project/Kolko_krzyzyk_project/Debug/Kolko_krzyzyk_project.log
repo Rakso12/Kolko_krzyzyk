@@ -1,14 +1,9 @@
-﻿  AiLow.cpp
-  AiMedium.cpp
-  Board.cpp
-  Button.cpp
-  Check.cpp
+﻿  Board.cpp
   End.cpp
   Field.cpp
 D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(30,34): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 D:\Git_projekty_ez\Kolko_krzyzyk\Kolko_krzyzyk_project\Kolko_krzyzyk_project\Field.cpp(30,26): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Menu.cpp
-  ResourceMenager.cpp
   Settings.cpp
   main.cpp
   Generowanie kodu...

@@ -1,56 +1,53 @@
 #include "Menu.h"
 
+/// <summary>
+/// Funkcja obs³uguj¹ca rysowanie okna Menu wraz z obs³ug¹ przycisków.
+/// </summary>
+/// <param name="resource"> wskaŸnik do zmiennej obs³ugi zasobów </param>
 void Menu::drawMenu(ResourceMenager* resource)
 {
-
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
+	
+	// Ograniczenie liczby klatek na sekundê
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(2);
-	// tworzenie przycisku Start
 
 	Button* button1 = new Button(resource, "NEW GAME", sf::Vector2f(100,80));
-
-	// tworzenie przycisku Settings
 	Button* button2 = new Button(resource, "SETTINGS", sf::Vector2f(100, 240));
-
-	
-	// tworzenie przycisku Exit Game
 	Button* button3 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 400));
 
-	// tworzenie wykorzystywanych pozniej zmiennych pozycji
-	sf::Vector2f pozycjamyszki;
-	sf::Vector2i pozycjam;
-
-	// tworzenie obiektów do odwo³añ w obs³udze przycisków
 	Board* board = new Board();
 	Settings* settings = new Settings();
+
+	sf::Vector2f mousePosition;
 
 	while (window.isOpen())
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			// Obs³uga przycisku zamkniêcia
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) // Obs³uga przycisku zamkniêcia
 				window.close();
 
 			if (event.type == sf::Event::MouseButtonPressed) {
-				pozycjam = sf::Mouse::getPosition(window);
-				pozycjamyszki = window.mapPixelToCoords(pozycjam);
+				mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window)); // Translacja pozycji myszki na koordynaty mapy
+				
 				// Obs³uga przycisku New Game
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 180 && pozycjamyszki.y > 80)
+				if (mousePosition.x <= 400 && mousePosition.x > 100 && mousePosition.y <= 180 && mousePosition.y > 80)
 				{
 					window.close();
-					board->DrawBoard(10, 1, resource);
+					board->DrawBoard(10, 1, resource); // Domyœlna plansza do gry - 2v2 rozmiar - 10x10
 				}
+
 				// Obs³uga przycisku Settings
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 340 && pozycjamyszki.y > 240)
+				if (mousePosition.x <= 400 && mousePosition.x > 100 && mousePosition.y <= 340 && mousePosition.y > 240)
 				{
 					window.close();
 					settings->drawSetting(resource);
 				}
+
 				// Obs³uga przycisku Exit Game
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 500 && pozycjamyszki.y > 400)
+				if (mousePosition.x <= 400 && mousePosition.x > 100 && mousePosition.y <= 500 && mousePosition.y > 400)
 				{
 					window.close();
 				}

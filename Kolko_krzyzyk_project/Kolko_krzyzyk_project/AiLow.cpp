@@ -1,5 +1,10 @@
 #include "AiLow.h"
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pola"> obiekt planszy </param>
+/// <param name="size"> rozmiar planszy </param>
 void AiLow::moveAiLow(std::vector<std::vector<Field*>> pola, int size)
 {
     do{
