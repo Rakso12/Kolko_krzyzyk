@@ -8,7 +8,7 @@ class Check
 	int ile_wygrywa = 3;
 public:
 	Check() = default;
-	bool czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar, std::string znak, int x, int y);
+	bool czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar, std::string znak);
 	void setIleWygrywa(int liczba);
 	int getIleWygrywa();
 };

@@ -21,6 +21,10 @@ public:
 
 	void setPosition(int x, int y); // zmien pozycje na
 	void setText(char text); // ustaw tekst
+	void setUnAvailable();
 	void setAvailable();
 	int isAvailable();
+
+	// KONSTRUKTOR KOPIUJ¥CY DLA AIMEDIUM
+
 };

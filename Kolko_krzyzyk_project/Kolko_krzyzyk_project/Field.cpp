@@ -35,8 +35,12 @@ void Field::setText(char text) {
 /// <summary>
 /// Funkcja ustawiajaca dostepnosc pola na niedostepne
 /// </summary>
-void Field::setAvailable(){
+void Field::setUnAvailable(){
 	available = 1;
+}
+
+void Field::setAvailable() {
+	available = 0;
 }
 
 /// <summary>

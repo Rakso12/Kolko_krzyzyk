@@ -8,11 +8,11 @@
 /// <param name="pola"> Vektor zawierajacy plansze </param>
 /// <param name="rozmiar"> Rozmiar boku planszy </param>
 /// <param name="znak"> Aktualnie sprawdzany/wstawiany znak </param>
-bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::string znak, int x, int y)
+bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::string znak)
 {
 	int ile_wygrywa = getIleWygrywa();
 	bool tmp = false;
-
+	/*
 	// sprawdzanie strefy niebieskiej
 	if(x > 1 && x < rozmiar - 2 && y > 1 && y < rozmiar - 2){	
 		if (pola[y][x - 1]->getText().getString().toAnsiString() == znak &&
@@ -809,6 +809,71 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 			return true;
 		else
 			return false;
+	}
+	return false;
+	*/
+
+	// -----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
+
+	// 
+	for (int y = 0; y < rozmiar; ++y) {
+		for (int x = 0; x < rozmiar - ile_wygrywa - 1; ++x) {
+			int licznik = 0;
+			for (int i = 0; i < 3; ++i) {
+				if (pola[y][x + i]->getText().getString().toAnsiString() == znak) {
+					licznik++;
+				}
+			}
+			if (licznik == ile_wygrywa) {
+				return true;
+			}
+		}
+	}
+
+	for (int x = 0; x < rozmiar; ++x) {
+		for (int y = 0; y < rozmiar - ile_wygrywa - 1; ++y) {
+			int licznik = 0;
+			for (int i = 0; i < 3; ++i) {
+				if (pola[y + i][x]->getText().getString().toAnsiString() == znak) {
+					++licznik;
+				}
+			}
+			if (licznik == ile_wygrywa) {
+				return true;
+			}
+		}
+	}
+
+	for (int x = 0; x < rozmiar - ile_wygrywa - 1; ++x) {
+		for (int y = 0; y < rozmiar - ile_wygrywa - 1; ++y) {
+			int licznik = 0;
+			for (int i = 0; i < 3; ++i) {
+				if (pola[y + i][x + i]->getText().getString().toAnsiString() == znak) {
+					++licznik;
+				}
+			}
+			if (licznik == ile_wygrywa) {
+				return true;
+			}
+		}
+	}
+
+	for (int x = rozmiar - 1; x >= rozmiar - 1; --x) {
+		for (int y = rozmiar - 1; y >= rozmiar - 1; --y) {
+			int licznik = 0;
+			for (int i = 0; i < 3; ++i) {
+				if (pola[y - i][x - i]->getText().getString().toAnsiString() == znak) {
+					++licznik;
+				}
+			}
+			if (licznik == ile_wygrywa) {
+				return true;
+			}
+		}
 	}
 	return false;
 }

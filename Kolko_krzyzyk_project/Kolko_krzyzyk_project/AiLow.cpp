@@ -13,7 +13,7 @@ void AiLow::moveAiLow(std::vector<std::vector<Field*>> pola, int size)
     } while (pola[wsp_y][wsp_x]->isAvailable() != 0);
     
     pola[wsp_y][wsp_x]->setText('O');
-    pola[wsp_y][wsp_x]->setAvailable();
+    pola[wsp_y][wsp_x]->setUnAvailable();
 }
 
 int AiLow::getY()

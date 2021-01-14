@@ -49,7 +49,7 @@ void Settings::drawSetting(ResourceMenager* resource)
 				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 250 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
 				{
 					window.close();
-					//board->DrawBoard(settings->rozmiar, 3, resource);
+					board->DrawBoard(settings->rozmiar, 3, resource);
 				}
 
 				// Obs³uga przycisku rozmiar++

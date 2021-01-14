@@ -54,7 +54,7 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                         if (act_level == 1) {
                             if (licznik % 2 == 0) {
                                 pola[wsp_y][wsp_x]->setText('X');
-                                if (sprawdz.czyWygrana(pola, rozmiar, "X", wsp_x, wsp_y)) {
+                                if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
                                     window.close();
                                     window.clear();
                                     koniec.drawEnd("X", resource);
@@ -62,14 +62,14 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                             }
                             if (licznik % 2 != 0) {
                                 pola[wsp_y][wsp_x]->setText('O');
-                                if (sprawdz.czyWygrana(pola, rozmiar, "O", wsp_x, wsp_y)) {
+                                if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
                                     window.close();
                                     window.clear();
                                     koniec.drawEnd("O", resource);
                                 }
                             }
                             
-                            pola[wsp_y][wsp_x]->setAvailable();
+                            pola[wsp_y][wsp_x]->setUnAvailable();
                             licznik++;
                             
                             if (licznik == ile_pol) {
@@ -82,7 +82,7 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                         if (act_level == 2) {
                             if (licznik % 2 == 0) {
                                 pola[wsp_y][wsp_x]->setText('X');
-                                if (sprawdz.czyWygrana(pola, rozmiar, "X", wsp_x, wsp_y)) {
+                                if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
                                     window.close();
                                     koniec.drawEnd("X", resource);
                                 }
@@ -90,13 +90,13 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                             
                             ailow.moveAiLow(pola, size);
                             
-                            if (sprawdz.czyWygrana(pola, rozmiar, "O", ailow.getX(), ailow.getY())) {
+                            if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
                                 window.close();
                                 koniec.drawEnd("O", resource);
 
                             }
                             
-                            pola[wsp_y][wsp_x]->setAvailable();
+                            pola[wsp_y][wsp_x]->setUnAvailable();
                             licznik = licznik + 2;
                             
                             if (licznik == ile_pol) {
@@ -105,30 +105,30 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
 
                         }
 
-                        // Plan gry gracz vs komputer (min max)
+                        // Plan gry gracz vs s³aby komputer
                         if (act_level == 3) {
                             if (licznik % 2 == 0) {
                                 pola[wsp_y][wsp_x]->setText('X');
-                                
-                                if (sprawdz.czyWygrana(pola, rozmiar, "X", wsp_x, wsp_y)) {
+                                if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
                                     window.close();
                                     koniec.drawEnd("X", resource);
                                 }
                             }
-                            
+
                             aimedium.moveAiMedium(pola, size);
-                            
-                            if (sprawdz.czyWygrana(pola, rozmiar, "O", aimedium.getX(), aimedium.getY())) {
+
+                            if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
                                 window.close();
                                 koniec.drawEnd("O", resource);
+
                             }
-                            pola[wsp_y][wsp_x]->setAvailable();
+
+                            pola[wsp_y][wsp_x]->setUnAvailable();
                             licznik = licznik + 2;
 
                             if (licznik == ile_pol) {
                                 koniec.drawEnd("NIKT", resource);
                             }
-
                         }
                     }
                 }

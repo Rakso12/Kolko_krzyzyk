@@ -9,10 +9,22 @@ void AiMedium::moveAiMedium(std::vector<std::vector<Field*>> pola, int size)
 {
     Check sprawdz;
     sf::Vector2i best;
-    best = findBestMove(pola, size, &sprawdz, 'O');
+    std::vector <std::vector <Field*>> copyPola;
+    for (int i = 0; i < size; i++)
+    {
+        std::vector<Field*> wiersz;
+        for (int j = 0; j < size; j++) {
+            //wiersz.push_back(kopiaaaaaaa(pola[i][j])); // dodaæ konstruktor kopiuj¹cy tu i w fieldzie
+            wiersz[j]->setPosition(j * 31, i * 31);
+        }
+        copyPola.push_back(wiersz);
+        wiersz.clear();
+    }
+
+    best = findBestMove(copyPola, size, &sprawdz, 'O');
 
     pola[best.y][best.x]->setText('O');
-    pola[best.y][best.x]->setAvailable();
+    pola[best.y][best.x]->setUnAvailable();
 }
 
 int AiMedium::getY()
@@ -28,12 +40,12 @@ int AiMedium::getX()
 /// <summary>
 /// Funkcja szukania najlepszego ruchu w danym momencie
 /// </summary>
-/// <param name="pola"> obiekt planszy </param>
+/// <param name="copyPola"> obiekt planszy </param>
 /// <param name="size"> rozmiar planszy </param>
 /// <param name="check"> obiekt sprawdzania wygranej </param>
 /// <param name="znak"> znak aktualnego gracza </param>
 /// <returns></returns>
-sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> pola, int size, Check* check, char znak)
+sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> copyPola, int size, Check* check, char znak)
 {
     int bestVal = - 1000;
     sf::Vector2i bestMove;
@@ -42,11 +54,13 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> pola, int s
 
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - 1; j++) {
-            if (pola[i][j]->isAvailable() == 0) {
+            if (copyPola[i][j]->isAvailable() == 0) {
                 
-                pola[i][j]->setText(znak);
-                int moveVal = minMax(pola, 0, false, size, check, i, j);
-                pola[i][j]->setText('_');
+                copyPola[i][j]->setText(znak);
+                copyPola[i][j]->setUnAvailable();
+                int moveVal = minMax(copyPola, 0, false, size, check, i, j);
+                copyPola[i][j]->setText('_');
+                copyPola[i][j]->setAvailable();
 
                 if (moveVal > bestVal) 
                 {
@@ -63,7 +77,7 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> pola, int s
 /// <summary>
 /// Funkcja minmaxowa
 /// </summary>
-/// <param name="pola"> obiekt planszy </param>
+/// <param name="copyPola"> obiekt planszy </param>
 /// <param name="depth"> licznik wêz³a zagnie¿d¿enia</param>
 /// <param name="isMax"> znacznik zawodnika </param>
 /// <param name="size"> rozmiar planszy </param>
@@ -71,23 +85,26 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> pola, int s
 /// <param name="wsp_x"> wspó³rzêdna x wykonywanego ruchu </param>
 /// <param name="wsp_y"> wspó³rzêdna y wykonywanego ruchu </param>
 /// <returns></returns>
-int AiMedium::minMax(std::vector<std::vector<Field*>> pola, int depth, bool isMax, int size, Check* check, int wsp_x, int wsp_y)
+int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool isMax, int size, Check* check, int wsp_x, int wsp_y)
 {
-    int score = check->czyWygrana(pola, size, "0", wsp_x, wsp_y);
+    int score = check->czyWygrana(copyPola, size, "0");
 
     if (score == 1) return 1;
 
-    if (isMovesLeft(pola, size) == false) return 0;
+    if (isMovesLeft(copyPola, size) == false) return 0;
 
     if (isMax) {
         int best = - 1000;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 3; j++) {
-                if (pola[i][j]->isAvailable() == 0) 
+                if (copyPola[i][j]->isAvailable() == 0) 
                 {
-                    pola[i][j]->setText('O');
-                    best = std::max(best, minMax(pola, (depth + 1), !isMax, size, check, i, j));
-                    pola[i][j]->setText('_');
+                    copyPola[i][j]->setText('O');
+                    copyPola[i][j]->setUnAvailable();
+                    best = std::max(best, minMax(copyPola, (depth + 1), !isMax, size, check, i, j));
+                    copyPola[i][j]->setText('_');
+                    copyPola[i][j]->setUnAvailable();
+
                 }
             }
         }
@@ -97,11 +114,14 @@ int AiMedium::minMax(std::vector<std::vector<Field*>> pola, int depth, bool isMa
         int best = 1000;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 3; j++) {
-                if (pola[i][j]->isAvailable() == 0) 
+                if (copyPola[i][j]->isAvailable() == 0) 
                 {
-                    pola[i][j]->setText('X');
-                    best = std::min(best, minMax(pola, (depth + 1), !isMax, size, check, i, j));
-                    pola[i][j]->setText('_');
+                    copyPola[i][j]->setText('X');
+                    copyPola[i][j]->setUnAvailable();
+                    best = std::min(best, minMax(copyPola, (depth + 1), !isMax, size, check, i, j));
+                    copyPola[i][j]->setText('_');
+                    copyPola[i][j]->setUnAvailable();
+
                 }
             }
         }
@@ -113,14 +133,14 @@ int AiMedium::minMax(std::vector<std::vector<Field*>> pola, int depth, bool isMa
 /// <summary>
 /// Funkcja sprawdzaj¹ca czy pozosta³y jakiekolwiek ruchy do wykonania na planszy
 /// </summary>
-/// <param name="pola"> obiekt planszy </param>
+/// <param name="copyPola"> obiekt planszy </param>
 /// <param name="size"> rozmiar </param>
 /// <returns></returns>
-bool AiMedium::isMovesLeft(std::vector<std::vector<Field*>> pola, int size)
+bool AiMedium::isMovesLeft(std::vector<std::vector<Field*>> copyPola, int size)
 {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (pola[i][j]->isAvailable() == 0) {
+            if (copyPola[i][j]->isAvailable() == 0) {
                 return true;
             }
         }
