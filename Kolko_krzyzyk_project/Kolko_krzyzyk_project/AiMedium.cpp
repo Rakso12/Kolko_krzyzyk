@@ -5,26 +5,15 @@
 /// </summary>
 /// <param name="pola"> obiekt planszy </param>
 /// <param name="size"> rozmiar planszy </param>
-void AiMedium::moveAiMedium(std::vector<std::vector<Field*>> pola, int size)
+void AiMedium::moveAiMedium(std::vector<std::vector<Field*>> tmpBoard, std::vector<std::vector<Field*>> mainBoard, int size)
 {
     Check sprawdz;
-    sf::Vector2i best;
-    std::vector <std::vector <Field*>> copyPola;
-    for (int i = 0; i < size; i++)
-    {
-        std::vector<Field*> wiersz;
-        for (int j = 0; j < size; j++) {
-            //wiersz.push_back(kopiaaaaaaa(pola[i][j])); // dodaæ konstruktor kopiuj¹cy tu i w fieldzie
-            wiersz[j]->setPosition(j * 31, i * 31);
-        }
-        copyPola.push_back(wiersz);
-        wiersz.clear();
-    }
+    sf::Vector2i move;
 
-    best = findBestMove(copyPola, size, &sprawdz, 'O');
+    move = findBestMove(tmpBoard, size, &sprawdz, 'O');
 
-    pola[best.y][best.x]->setText('O');
-    pola[best.y][best.x]->setUnAvailable();
+    mainBoard[move.y][move.x]->setText('O');
+    mainBoard[move.y][move.x]->setUnAvailable();
 }
 
 int AiMedium::getY()
@@ -48,9 +37,7 @@ int AiMedium::getX()
 sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> copyPola, int size, Check* check, char znak)
 {
     int bestVal = - 1000;
-    sf::Vector2i bestMove;
-    bestMove.x = -1;
-    bestMove.y = -1;
+    sf::Vector2i bestMove = sf::Vector2i(-1, -1);
 
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - 1; j++) {
@@ -88,7 +75,6 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> copyPola, i
 int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool isMax, int size, Check* check, int wsp_x, int wsp_y)
 {
     int score = check->czyWygrana(copyPola, size, "0");
-
     if (score == 1) return 1;
 
     if (isMovesLeft(copyPola, size) == false) return 0;
@@ -104,7 +90,6 @@ int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool 
                     best = std::max(best, minMax(copyPola, (depth + 1), !isMax, size, check, i, j));
                     copyPola[i][j]->setText('_');
                     copyPola[i][j]->setUnAvailable();
-
                 }
             }
         }

@@ -11,6 +11,13 @@ Field::Field(ResourceMenager* resource) {
 	button.setFillColor(sf::Color::White);
 }
 
+Field::Field(Field& main_board)
+{
+	button = main_board.button;
+	button_text = main_board.button_text;
+	available = main_board.available;
+}
+
 /// <summary>
 /// Funkcja utawiajaca pozycje obiektu przycisku wraz z jego tekstem
 /// </summary>

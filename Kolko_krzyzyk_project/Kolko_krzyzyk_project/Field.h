@@ -25,6 +25,6 @@ public:
 	void setAvailable();
 	int isAvailable();
 
-	// KONSTRUKTOR KOPIUJ¥CY DLA AIMEDIUM
+	Field(Field& main_board);
 
 };

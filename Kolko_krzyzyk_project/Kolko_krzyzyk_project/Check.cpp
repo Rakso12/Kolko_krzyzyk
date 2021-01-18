@@ -862,11 +862,26 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 		}
 	}
 
-	for (int x = rozmiar - 1; x >= rozmiar - 1; --x) {
-		for (int y = rozmiar - 1; y >= rozmiar - 1; --y) {
+
+	for (int x = rozmiar - ile_wygrywa - 1; x >= ile_wygrywa ; --x) {
+		for (int y = 0; y < rozmiar - ile_wygrywa - 1; ++y) {
 			int licznik = 0;
 			for (int i = 0; i < 3; ++i) {
-				if (pola[y - i][x - i]->getText().getString().toAnsiString() == znak) {
+				if (pola[y + i][x - i]->getText().getString().toAnsiString() == znak) {
+					++licznik;
+				}
+			}
+			if (licznik == ile_wygrywa) {
+				return true;
+			}
+		}
+	}
+
+	for (int x = rozmiar - ile_wygrywa - 1; x >= 0; --x) {
+		for (int y = rozmiar - ile_wygrywa - 1; y >= 0; --y) {
+			int licznik = 0;
+			for (int i = 0; i < 3; ++i) {
+				if (pola[y + i][x + i]->getText().getString().toAnsiString() == znak) {
 					++licznik;
 				}
 			}

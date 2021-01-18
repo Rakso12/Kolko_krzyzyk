@@ -6,7 +6,7 @@ class AiMedium
 {
 	int wsp_x, wsp_y;
 public:
-	void moveAiMedium(std::vector<std::vector<Field*>> pola, int size);
+	void moveAiMedium(std::vector<std::vector<Field*>> tmpBoard, std::vector<std::vector<Field*>> mainBoard, int size);
 	int getX();
 	int getY();
 	sf::Vector2i findBestMove(std::vector<std::vector<Field*>>pola, int size, Check* check, char znak);

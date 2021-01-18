@@ -21,6 +21,7 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
     AiMedium aimedium;
 
     std::vector <std::vector <Field*>> pola;
+    sf::Vector2i best;
     sf::Vector2f pozycjamyszki;
 
     for (int i = 0; i < rozmiar; i++)
@@ -105,27 +106,38 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
 
                         }
 
-                        // Plan gry gracz vs s³aby komputer
+                        // Plan gry gracz vs mocne ai
                         if (act_level == 3) {
                             if (licznik % 2 == 0) {
                                 pola[wsp_y][wsp_x]->setText('X');
+                                pola[wsp_y][wsp_x]->setUnAvailable();
                                 if (sprawdz.czyWygrana(pola, rozmiar, "X")) {
                                     window.close();
                                     koniec.drawEnd("X", resource);
                                 }
                             }
 
-                            aimedium.moveAiMedium(pola, size);
+                            std::vector <std::vector <Field*>> tmpBoard;
+                            for (int i = 0; i < size; i++)
+                            {
+                                std::vector<Field*> wiersz;
+                                for (int j = 0; j < size; j++) {
+                                    Field* tmp = new Field(*pola[i][j]);
+                                    wiersz.push_back(tmp);
+                                    wiersz[j]->setPosition(j * 31, i * 31);
+                                }
+                                tmpBoard.push_back(wiersz);
+                                wiersz.clear();
+                            }
 
+                            aimedium.moveAiMedium(tmpBoard, pola, size);
+                                                    
                             if (sprawdz.czyWygrana(pola, rozmiar, "O")) {
                                 window.close();
                                 koniec.drawEnd("O", resource);
-
                             }
 
-                            pola[wsp_y][wsp_x]->setUnAvailable();
                             licznik = licznik + 2;
-
                             if (licznik == ile_pol) {
                                 koniec.drawEnd("NIKT", resource);
                             }
