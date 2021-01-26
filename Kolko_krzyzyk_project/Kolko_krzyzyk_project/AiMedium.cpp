@@ -75,10 +75,16 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> copyPola, i
 int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool isMax, int size, Check* check, int wsp_x, int wsp_y)
 {
     int score = check->czyWygrana(copyPola, size, "0");  // Zero if X win / lub nie     1 jeœli 0 win
-    if (score == 1) return score;
+    if (score == 1) {
+        score = 10;
+        return score;
+    }
 
     score = check->czyWygrana(copyPola, size, "X");
-    if (score == 1) return score;
+    if (score == 1){
+        score = -10;
+        return score;
+    }
 
     if (isMovesLeft(copyPola, size) == false) return 0;
 
