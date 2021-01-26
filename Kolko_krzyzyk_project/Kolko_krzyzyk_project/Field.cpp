@@ -1,5 +1,9 @@
 #include "Field.h"
 
+/// <summary>
+/// Konstruktor obiektu - poszczególnego pola na planszy.
+/// </summary>
+/// <param name="resource"></param>
 Field::Field(ResourceMenager* resource) {
 
 	button_text.setFillColor(sf::Color::Blue);
@@ -46,6 +50,9 @@ void Field::setUnAvailable(){
 	available = 1;
 }
 
+/// <summary>
+/// Funkcja ustawiajaca dostepnosc pola na dostepne
+/// </summary>
 void Field::setAvailable() {
 	available = 0;
 }

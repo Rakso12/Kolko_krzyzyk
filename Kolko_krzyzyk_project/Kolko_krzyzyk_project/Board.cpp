@@ -2,6 +2,10 @@
 #include <typeinfo>
 #include <SFML/System.hpp>
 
+/// <summary>
+/// Funkcja obs³uguj¹ca rysowanie planszy wraz z jej obs³ug¹.
+/// </summary>
+/// <param name="resource"> rozmiar planszy, poziom trudnoœci (Human vs Human/ Human vs AiLow/ Human vs AiMedium), wskaŸnik do zmiennej obs³ugi zasobów  </param>
 void Board::DrawBoard(int size, int level, ResourceMenager* resource)
 {
     sf::RenderWindow window(sf::VideoMode(size * 31, size * 31), "Kolko i krzyzyk"); // tworzenie okna
@@ -120,14 +124,14 @@ void Board::DrawBoard(int size, int level, ResourceMenager* resource)
                             std::vector <std::vector <Field*>> tmpBoard;
                             for (int i = 0; i < size; i++)
                             {
-                                std::vector<Field*> wiersz;
+                                std::vector<Field*> wiersz2;
                                 for (int j = 0; j < size; j++) {
                                     Field* tmp = new Field(*pola[i][j]);
-                                    wiersz.push_back(tmp);
-                                    wiersz[j]->setPosition(j * 31, i * 31);
+                                    wiersz2.push_back(tmp);
+                                    wiersz2[j]->setPosition(j * 31, i * 31);
                                 }
-                                tmpBoard.push_back(wiersz);
-                                wiersz.clear();
+                                tmpBoard.push_back(wiersz2);
+                                wiersz2.clear();
                             }
 
                             aimedium.moveAiMedium(tmpBoard, pola, size);

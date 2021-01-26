@@ -3,9 +3,15 @@
 #include <vector>
 #include "Field.h"
 
+/// <summary>
+/// Klasa oodpowiedzialna za sprawdzanie wygranej na planszy.
+/// </summary>
 class Check
 {
-	int ile_wygrywa = 3;
+	/// <summary>
+	/// Zmienna odpowiedzialna za iloœæ wygrywaj¹cych ruchów domyœlnie 3 w rzêdzie wygrywa.
+	/// </summary>
+	int ile_wygrywa = 5;
 public:
 	Check() = default;
 	bool czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar, std::string znak);

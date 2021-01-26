@@ -74,13 +74,16 @@ sf::Vector2i AiMedium::findBestMove(std::vector<std::vector<Field*>> copyPola, i
 /// <returns></returns>
 int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool isMax, int size, Check* check, int wsp_x, int wsp_y)
 {
-    int score = check->czyWygrana(copyPola, size, "0");
-    if (score == 1) return 1;
+    int score = check->czyWygrana(copyPola, size, "0");  // Zero if X win / lub nie     1 jeœli 0 win
+    if (score == 1) return score;
+
+    score = check->czyWygrana(copyPola, size, "X");
+    if (score == 1) return score;
 
     if (isMovesLeft(copyPola, size) == false) return 0;
 
     if (isMax) {
-        int best = - 1000;
+        int best = -1000;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 3; j++) {
                 if (copyPola[i][j]->isAvailable() == 0) 
@@ -89,7 +92,7 @@ int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool 
                     copyPola[i][j]->setUnAvailable();
                     best = std::max(best, minMax(copyPola, (depth + 1), !isMax, size, check, i, j));
                     copyPola[i][j]->setText('_');
-                    copyPola[i][j]->setUnAvailable();
+                    copyPola[i][j]->setAvailable();
                 }
             }
         }
@@ -113,7 +116,6 @@ int AiMedium::minMax(std::vector<std::vector<Field*>> copyPola, int depth, bool 
         return best;
     }
 }
-
 
 /// <summary>
 /// Funkcja sprawdzaj¹ca czy pozosta³y jakiekolwiek ruchy do wykonania na planszy

@@ -1,5 +1,9 @@
 #include "End.h"
 
+/// <summary>
+/// Funkcja obs³uguj¹ca rysowanie okna menu po zakoñczeniu rozgrywki wraz z obs³ug¹ przycisków i wyœwietlaniem wyniku rozgrywki.
+/// </summary>
+/// <param name="resource"> wskaŸnik do zmiennej obs³ugi zasobów </param>
 void End::drawEnd(std::string znak, ResourceMenager* resource)
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");

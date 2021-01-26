@@ -1,5 +1,9 @@
 #include "Settings.h"
 
+/// <summary>
+/// Funkcja obs³uguj¹ca rysowanie okna menu opcji wraz z obs³ug¹ przycisków i wyœwietlaniem sk³adowych.
+/// </summary>
+/// <param name="resource"> wskaŸnik do zmiennej obs³ugi zasobów </param>
 void Settings::drawSetting(ResourceMenager* resource)
 {
 	sf::RenderWindow window(sf::VideoMode(500, 600), "Kolko i krzyzyk");
@@ -8,9 +12,9 @@ void Settings::drawSetting(ResourceMenager* resource)
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(12);
 
-	Button* button1 = new Button(resource, "GRAJ", sf::Vector2f(100, 20));
-	Button* button2 = new Button(resource, " LOW | MEDIUM", sf::Vector2f(100, 130));
-	Button* button3 = new Button(resource, ("SIZE = " + std::to_string(getRozmiar())), sf::Vector2f(100, 240));
+	Button* button1 = new Button(resource, "PLAY", sf::Vector2f(100, 20));
+	Button* button2 = new Button(resource, " LOW | MEDIUM", sf::Vector2f(100, 140));
+	Button* button3 = new Button(resource, ("SIZE = " + std::to_string(getRozmiar())), sf::Vector2f(100, 260));
 	Button* button4 = new Button(resource, "     UP   |  DOWN ", sf::Vector2f(100, 350));
 	Button* button5 = new Button(resource, "EXIT GAME", sf::Vector2f(100, 460));
 
@@ -39,7 +43,7 @@ void Settings::drawSetting(ResourceMenager* resource)
 				}
 
 				// Obs³uga przycisku low level
-				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 130)
+				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 230 && pozycjamyszki.y > 140)
 				{
 					window.close();
 					board->DrawBoard(settings->rozmiar, 2, resource);
@@ -52,7 +56,7 @@ void Settings::drawSetting(ResourceMenager* resource)
 					board->DrawBoard(settings->rozmiar, 3, resource);
 				}
 
-				// Obs³uga przycisku rozmiar++
+				// Wyœwietlanie rozmiaru
 				if (pozycjamyszki.x <= 250 && pozycjamyszki.x > 100 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
 				{
 					settings->up(settings);
@@ -60,8 +64,8 @@ void Settings::drawSetting(ResourceMenager* resource)
 					button3->setText(roz);
 				}
 
-				// Obs³uga przycisku rozmiar--
-				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 250 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
+				// Obs³uga przycisku rozmiar-- / rozmiar --
+				if (pozycjamyszki.x <= 400 && pozycjamyszki.x > 260 && pozycjamyszki.y <= 450 && pozycjamyszki.y > 350)
 				{
 					settings->down(settings);
 					roz = "SIZE = " + std::to_string(settings->getRozmiar());
@@ -96,11 +100,19 @@ void Settings::drawSetting(ResourceMenager* resource)
 	}
 }
 
+/// <summary>
+/// Funkcja zwracaj¹ca aktualnie ustawiony przez u¿ytkownika rozmiar planszy.
+/// </summary>
+/// <returns>zmienna liczbowa - rozmiar</returns>
 int Settings::getRozmiar()
 {
 	return rozmiar;
 }
 
+/// <summary>
+/// Funkcja zwiêkszaj¹ca rozmiar o jeden.
+/// </summary>
+/// <param name="settings"> objekt ustawieñ </param>
 void Settings::up(Settings* settings)
 {
 	if (settings->rozmiar >= 10 && settings->rozmiar < 30) 
@@ -109,6 +121,10 @@ void Settings::up(Settings* settings)
 	}
 }
 
+/// <summary>
+/// Funkcja zmniejszaj¹ca rozmiar o jeden
+/// </summary>
+/// <param name="settings"> obiekt ustawieñ </param>
 void Settings::down(Settings* settings)
 {
 	if (settings->rozmiar > 10) {

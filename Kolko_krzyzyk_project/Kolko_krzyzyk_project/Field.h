@@ -5,12 +5,21 @@
 
 
 /// <summary>
-/// Klasa pola na planszy
+/// Klasa poszczególnego pola na planszy gry
 /// </summary>
 class Field
 {
-	sf::RectangleShape button; // wyglad - ksztalt
-	sf::Text button_text; // wyglad - tekst
+	/// <summary>
+	/// obiekt odpowiadaj¹cy za wygl¹d pola
+	/// </summary>
+	sf::RectangleShape button;
+	/// <summary>
+	/// obiekt odpowiadaj¹cy za tekst na polu ( O / X / _ )
+	/// </summary>
+	sf::Text button_text;
+	/// <summary>
+	/// Zmienna dostêpnoœci pola (0 jeœli dostêpne, 1 jeœli niedostêpne)
+	/// </summary>
 	int available = 0;
 	
 

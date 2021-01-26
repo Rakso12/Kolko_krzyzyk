@@ -4,6 +4,9 @@
 #include "AiLow.h"
 #include "AiMedium.h"
 
+/// <summary>
+/// Klasa obs³uguj¹ca ca³¹ logikê planszy gry.
+/// </summary>
 class Board
 {
 public:
