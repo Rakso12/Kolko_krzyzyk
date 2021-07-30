@@ -20,6 +20,7 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 					licznik++;
 				}
 			}
+			best_AI = std::max(best_AI, licznik);
 			if (licznik == ile_wygrywa) {
 				return true;
 			}
@@ -34,6 +35,7 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 					++licznik;
 				}
 			}
+			best_AI = std::max(best_AI, licznik);
 			if (licznik == ile_wygrywa) {
 				return true;
 			}
@@ -51,6 +53,7 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 					++licznik;
 				}
 			}
+			best_AI = std::max(best_AI, licznik);
 			if (licznik == ile_wygrywa) {
 				return true;
 			}
@@ -65,6 +68,7 @@ bool Check::czyWygrana(std::vector<std::vector<Field*>> pola, int rozmiar, std::
 				if (pola[y + i][x - i]->getText().getString().toAnsiString() == znak)
 					++licznik;
 			}
+			best_AI = std::max(best_AI, licznik);
 
 			if (licznik == ile_wygrywa) {
 				return true;

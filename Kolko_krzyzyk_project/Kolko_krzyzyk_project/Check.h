@@ -13,6 +13,7 @@ class Check
 	/// </summary>
 	int ile_wygrywa = 5;
 public:
+	int best_AI = 0;
 	Check() = default;
 	bool czyWygrana(std::vector <std::vector <Field*>> pola, int rozmiar, std::string znak);
 	void setIleWygrywa(int liczba);
